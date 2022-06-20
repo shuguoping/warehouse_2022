@@ -1,0 +1,6 @@
+CREATE TABLE dataServerType  
+(
+  `dstID` int NOT NULL AUTO_INCREMENT COMMENT '服务类别编号',
+  `dstName` varchar(50) NOT NULL COMMENT '服务类别名称\r\n1、咨询\r\n2、投诉\r\n3、建议',
+  PRIMARY KEY (`dstID`)
+);

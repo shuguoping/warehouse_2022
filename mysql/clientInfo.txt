@@ -1,0 +1,27 @@
+CREATE TABLE clientInfo  
+(
+  `clientCode` varchar(11) NOT NULL COMMENT '客户编号（KH + 六位日期数字 + 三位数字流水号）',
+  `clientName` varchar(50) NOT NULL COMMENT '客户名称',
+  `clientAreaID` int NOT NULL DEFAULT 1 COMMENT '客户所在地区：\r\n1、北京  2、华北  3、中南  4、东北  5、西部',
+  `clientCustID` int NOT NULL COMMENT '所属客户经理编号',
+  `clientLevelID` int NOT NULL DEFAULT 1 COMMENT '客户等级\r\n1、普通客户 2、大客户 3、合作伙伴 4、战略合作伙伴',
+  `clientContentment` int NOT NULL DEFAULT 3 COMMENT '客户满意度\r\n1、☆ 2、☆☆ 3、☆☆☆ 4、☆☆☆☆ 5、☆☆☆☆☆',
+  `clientCredit` int3 NOT NULL COMMENT '客户信用度\r\n1、☆ 2、☆☆ 3、☆☆☆ 4、☆☆☆☆ 5、☆☆☆☆☆',
+  `clientAddress` varchar(200) NOT NULL DEFAULT '' COMMENT '客户地址',
+  `clientDakCode` varchar(10) NOT NULL DEFAULT '' COMMENT '客户邮政编码',
+  `clientTel` varchar(20) NOT NULL DEFAULT '' COMMENT '电话',
+  `clientFax` varchar(20) NOT NULL DEFAULT '' COMMENT '传真',
+  `clientNet` varchar(100) NOT NULL DEFAULT '' COMMENT '网址',
+  `clientCharter` varchar(50) NULL COMMENT '营业执照注册号',
+  `clientCorporation` varchar(50) NOT NULL DEFAULT '' COMMENT '法人',
+  `clientBankroll` int NULL COMMENT '注册资金（万元）',
+  `clientTurnoverYear` int NULL COMMENT '年营业额（万元）',
+  `clientBank` varchar(200) NOT NULL DEFAULT '' COMMENT '开户银行',
+  `clientAccounts` varchar(100) NOT NULL DEFAULT '' COMMENT '银行账号',
+  `clientNativeTax` varchar(100) NULL COMMENT '地税登记号',
+  `clientCountryTax` varchar(100) NULL COMMENT '国税登记号',
+  `clientState` int NULL DEFAULT 1 COMMENT '客户状态\r\n1、正常 2、暂缓流失 3、已流失\r\n注意：只有在暂缓流失状态下，才可以转化为确认流失状态。',
+  `clientLoseReason` varchar(300) NULL COMMENT '客户流失原因',
+  `clientLoseDate` varchar(50) NULL COMMENT '客户流失日期',
+  PRIMARY KEY (`clientCode`)
+);

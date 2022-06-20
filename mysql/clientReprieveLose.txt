@@ -1,0 +1,7 @@
+CREATE TABLE clientReprieveLose  
+(
+  `clientReprieveLoseID` int NOT NULL AUTO_INCREMENT COMMENT '客户暂缓流式记录编号',
+  `reprieveStep` varchar(500) NOT NULL COMMENT '暂缓措施项',
+  `clientCode` varchar(11) NOT NULL COMMENT '客户编号',
+  PRIMARY KEY (`clientReprieveLoseID`)
+);

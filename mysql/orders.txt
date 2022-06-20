@@ -1,0 +1,11 @@
+CREATE TABLE orders  
+(
+  `ordersID` int NOT NULL AUTO_INCREMENT COMMENT '订单编号',
+  `ordersDate` varchar(50) NOT NULL COMMENT '订购日期',
+  `address` varchar(200) NULL COMMENT '送货地址',
+  `ordersState` int NOT NULL DEFAULT 1 COMMENT '订单状态\r\n1、未回款 2、已回款',
+  `clientCode` varchar(11) NOT NULL,
+  `ordersTotal` int NOT NULL COMMENT '订单总金额',
+  `remark` varchar(100) NULL COMMENT '备注',
+  PRIMARY KEY (`ordersID`)
+);

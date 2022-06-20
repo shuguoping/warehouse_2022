@@ -1,0 +1,8 @@
+CREATE TABLE salePlan 
+(
+  `planID` int NOT NULL AUTO_INCREMENT COMMENT '销售机会执行计划编号',
+  `planChcID` int NOT NULL COMMENT '所属销售机会编号',
+  `planTodo` varchar(200) NOT NULL COMMENT '执行内容',
+  `planResult` varchar(200) NULL COMMENT '执行结果',
+  PRIMARY KEY (`planID`)
+);

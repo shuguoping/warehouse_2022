@@ -1,0 +1,17 @@
+CREATE TABLE `saleChance` 
+(
+  `chanceID` int NOT NULL auto_increment COMMENT '销售机会编号',
+  `chanceSource` varchar(50) default NULL COMMENT '机会来源',
+  `chanceCustName` varchar(100) NOT NULL COMMENT '客户名称',
+  `chanceTitle` varchar(200) NOT NULL COMMENT '概要',
+  `chanceRate` int NOT NULL COMMENT '成功机率',
+  `chanceLinkman` varchar(50) default NULL COMMENT '联系人',
+  `chanceTel` varchar(50) default NULL COMMENT '联系人电话',
+  `chanceDesc` varchar(200) default NULL COMMENT '机会描述',
+  `chanceCreateID` int unsigned NOT NULL COMMENT '创建人编号',
+  `chanceCreateDate` varchar(50) NOT NULL COMMENT '创建日期',
+  `chanceDueID` int default NULL COMMENT '指派人编号',
+  `chanceDueDate` varchar(50) default NULL COMMENT '指派日期',
+  `chanceStatus` int NOT NULL default '0' COMMENT '销售机会状态',
+  PRIMARY KEY  (`chanceID`)
+)

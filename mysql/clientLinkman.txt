@@ -1,0 +1,12 @@
+CREATE TABLE clientLinkman  
+(
+  `clientLinkmanID` int NOT NULL AUTO_INCREMENT COMMENT '客户联系人编号',
+  `clientLinkmanName` varchar(50) NOT NULL COMMENT '客户联系人姓名',
+  `clientLinkmanSex` int NOT NULL COMMENT '客户联系人性别\r\n0、男 1、女',
+  `clientLinkmanJob` varchar(100) NOT NULL COMMENT '客户联系人职位',
+  `clientLinkmanTel` varchar(20) NOT NULL COMMENT '客户联系人办公电话',
+  `clientLinkmanMoblie` varchar(20) NULL COMMENT '客户联系人手机',
+  `remark` varchar(100) NULL COMMENT '备注',
+  `clientCode` varchar(11) NOT NULL COMMENT '客户编号',
+  PRIMARY KEY (`clientLinkmanID`)
+);

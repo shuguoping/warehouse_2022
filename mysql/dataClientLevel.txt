@@ -1,0 +1,6 @@
+CREATE TABLE dataClientLevel  
+(
+  `dclID` int NOT NULL AUTO_INCREMENT COMMENT '企业客户等级编号',
+  `dclName` varchar(50) NOT NULL COMMENT '企业客户等级名称',
+  PRIMARY KEY (`dclID`)
+);
