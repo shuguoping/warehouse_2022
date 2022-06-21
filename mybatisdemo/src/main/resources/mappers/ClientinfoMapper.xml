@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo.mapper.ClientinfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientinfo">
+            <id property="code" column="clientCode" jdbcType="VARCHAR"/>
+            <result property="name" column="clientName" jdbcType="VARCHAR"/>
+            <result property="areaid" column="clientAreaID" jdbcType="INTEGER"/>
+            <result property="custid" column="clientCustID" jdbcType="INTEGER"/>
+            <result property="levelid" column="clientLevelID" jdbcType="INTEGER"/>
+            <result property="contentment" column="clientContentment" jdbcType="INTEGER"/>
+            <result property="credit" column="clientCredit" jdbcType="OTHER"/>
+            <result property="address" column="clientAddress" jdbcType="VARCHAR"/>
+            <result property="dakcode" column="clientDakCode" jdbcType="VARCHAR"/>
+            <result property="tel" column="clientTel" jdbcType="VARCHAR"/>
+            <result property="fax" column="clientFax" jdbcType="VARCHAR"/>
+            <result property="net" column="clientNet" jdbcType="VARCHAR"/>
+            <result property="charter" column="clientCharter" jdbcType="VARCHAR"/>
+            <result property="corporation" column="clientCorporation" jdbcType="VARCHAR"/>
+            <result property="bankroll" column="clientBankroll" jdbcType="INTEGER"/>
+            <result property="turnoveryear" column="clientTurnoverYear" jdbcType="INTEGER"/>
+            <result property="bank" column="clientBank" jdbcType="VARCHAR"/>
+            <result property="accounts" column="clientAccounts" jdbcType="VARCHAR"/>
+            <result property="nativetax" column="clientNativeTax" jdbcType="VARCHAR"/>
+            <result property="countrytax" column="clientCountryTax" jdbcType="VARCHAR"/>
+            <result property="state" column="clientState" jdbcType="INTEGER"/>
+            <result property="losereason" column="clientLoseReason" jdbcType="VARCHAR"/>
+            <result property="losedate" column="clientLoseDate" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        clientCode,clientName,clientAreaID,
+        clientCustID,clientLevelID,clientContentment,
+        clientCredit,clientAddress,clientDakCode,
+        clientTel,clientFax,clientNet,
+        clientCharter,clientCorporation,clientBankroll,
+        clientTurnoverYear,clientBank,clientAccounts,
+        clientNativeTax,clientCountryTax,clientState,
+        clientLoseReason,clientLoseDate
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from clientinfo
+        where  clientCode = #{code,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from clientinfo
+        where  clientCode = #{code,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="clientCode" keyProperty="code" parameterType="com.example.mybatisdemo.entity.Clientinfo" useGeneratedKeys="true">
+        insert into clientinfo
+        ( clientCode,clientName,clientAreaID
+        ,clientCustID,clientLevelID,clientContentment
+        ,clientCredit,clientAddress,clientDakCode
+        ,clientTel,clientFax,clientNet
+        ,clientCharter,clientCorporation,clientBankroll
+        ,clientTurnoverYear,clientBank,clientAccounts
+        ,clientNativeTax,clientCountryTax,clientState
+        ,clientLoseReason,clientLoseDate)
+        values (#{code,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{areaid,jdbcType=INTEGER}
+        ,#{custid,jdbcType=INTEGER},#{levelid,jdbcType=INTEGER},#{contentment,jdbcType=INTEGER}
+        ,#{credit,jdbcType=OTHER},#{address,jdbcType=VARCHAR},#{dakcode,jdbcType=VARCHAR}
+        ,#{tel,jdbcType=VARCHAR},#{fax,jdbcType=VARCHAR},#{net,jdbcType=VARCHAR}
+        ,#{charter,jdbcType=VARCHAR},#{corporation,jdbcType=VARCHAR},#{bankroll,jdbcType=INTEGER}
+        ,#{turnoveryear,jdbcType=INTEGER},#{bank,jdbcType=VARCHAR},#{accounts,jdbcType=VARCHAR}
+        ,#{nativetax,jdbcType=VARCHAR},#{countrytax,jdbcType=VARCHAR},#{state,jdbcType=INTEGER}
+        ,#{losereason,jdbcType=VARCHAR},#{losedate,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="clientCode" keyProperty="code" parameterType="com.example.mybatisdemo.entity.Clientinfo" useGeneratedKeys="true">
+        insert into clientinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="code != null">clientCode,</if>
+                <if test="name != null">clientName,</if>
+                <if test="areaid != null">clientAreaID,</if>
+                <if test="custid != null">clientCustID,</if>
+                <if test="levelid != null">clientLevelID,</if>
+                <if test="contentment != null">clientContentment,</if>
+                <if test="credit != null">clientCredit,</if>
+                <if test="address != null">clientAddress,</if>
+                <if test="dakcode != null">clientDakCode,</if>
+                <if test="tel != null">clientTel,</if>
+                <if test="fax != null">clientFax,</if>
+                <if test="net != null">clientNet,</if>
+                <if test="charter != null">clientCharter,</if>
+                <if test="corporation != null">clientCorporation,</if>
+                <if test="bankroll != null">clientBankroll,</if>
+                <if test="turnoveryear != null">clientTurnoverYear,</if>
+                <if test="bank != null">clientBank,</if>
+                <if test="accounts != null">clientAccounts,</if>
+                <if test="nativetax != null">clientNativeTax,</if>
+                <if test="countrytax != null">clientCountryTax,</if>
+                <if test="state != null">clientState,</if>
+                <if test="losereason != null">clientLoseReason,</if>
+                <if test="losedate != null">clientLoseDate,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="code != null">#{code,jdbcType=VARCHAR},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+                <if test="areaid != null">#{areaid,jdbcType=INTEGER},</if>
+                <if test="custid != null">#{custid,jdbcType=INTEGER},</if>
+                <if test="levelid != null">#{levelid,jdbcType=INTEGER},</if>
+                <if test="contentment != null">#{contentment,jdbcType=INTEGER},</if>
+                <if test="credit != null">#{credit,jdbcType=OTHER},</if>
+                <if test="address != null">#{address,jdbcType=VARCHAR},</if>
+                <if test="dakcode != null">#{dakcode,jdbcType=VARCHAR},</if>
+                <if test="tel != null">#{tel,jdbcType=VARCHAR},</if>
+                <if test="fax != null">#{fax,jdbcType=VARCHAR},</if>
+                <if test="net != null">#{net,jdbcType=VARCHAR},</if>
+                <if test="charter != null">#{charter,jdbcType=VARCHAR},</if>
+                <if test="corporation != null">#{corporation,jdbcType=VARCHAR},</if>
+                <if test="bankroll != null">#{bankroll,jdbcType=INTEGER},</if>
+                <if test="turnoveryear != null">#{turnoveryear,jdbcType=INTEGER},</if>
+                <if test="bank != null">#{bank,jdbcType=VARCHAR},</if>
+                <if test="accounts != null">#{accounts,jdbcType=VARCHAR},</if>
+                <if test="nativetax != null">#{nativetax,jdbcType=VARCHAR},</if>
+                <if test="countrytax != null">#{countrytax,jdbcType=VARCHAR},</if>
+                <if test="state != null">#{state,jdbcType=INTEGER},</if>
+                <if test="losereason != null">#{losereason,jdbcType=VARCHAR},</if>
+                <if test="losedate != null">#{losedate,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.entity.Clientinfo">
+        update clientinfo
+        <set>
+                <if test="name != null">
+                    clientName = #{name,jdbcType=VARCHAR},
+                </if>
+                <if test="areaid != null">
+                    clientAreaID = #{areaid,jdbcType=INTEGER},
+                </if>
+                <if test="custid != null">
+                    clientCustID = #{custid,jdbcType=INTEGER},
+                </if>
+                <if test="levelid != null">
+                    clientLevelID = #{levelid,jdbcType=INTEGER},
+                </if>
+                <if test="contentment != null">
+                    clientContentment = #{contentment,jdbcType=INTEGER},
+                </if>
+                <if test="credit != null">
+                    clientCredit = #{credit,jdbcType=OTHER},
+                </if>
+                <if test="address != null">
+                    clientAddress = #{address,jdbcType=VARCHAR},
+                </if>
+                <if test="dakcode != null">
+                    clientDakCode = #{dakcode,jdbcType=VARCHAR},
+                </if>
+                <if test="tel != null">
+                    clientTel = #{tel,jdbcType=VARCHAR},
+                </if>
+                <if test="fax != null">
+                    clientFax = #{fax,jdbcType=VARCHAR},
+                </if>
+                <if test="net != null">
+                    clientNet = #{net,jdbcType=VARCHAR},
+                </if>
+                <if test="charter != null">
+                    clientCharter = #{charter,jdbcType=VARCHAR},
+                </if>
+                <if test="corporation != null">
+                    clientCorporation = #{corporation,jdbcType=VARCHAR},
+                </if>
+                <if test="bankroll != null">
+                    clientBankroll = #{bankroll,jdbcType=INTEGER},
+                </if>
+                <if test="turnoveryear != null">
+                    clientTurnoverYear = #{turnoveryear,jdbcType=INTEGER},
+                </if>
+                <if test="bank != null">
+                    clientBank = #{bank,jdbcType=VARCHAR},
+                </if>
+                <if test="accounts != null">
+                    clientAccounts = #{accounts,jdbcType=VARCHAR},
+                </if>
+                <if test="nativetax != null">
+                    clientNativeTax = #{nativetax,jdbcType=VARCHAR},
+                </if>
+                <if test="countrytax != null">
+                    clientCountryTax = #{countrytax,jdbcType=VARCHAR},
+                </if>
+                <if test="state != null">
+                    clientState = #{state,jdbcType=INTEGER},
+                </if>
+                <if test="losereason != null">
+                    clientLoseReason = #{losereason,jdbcType=VARCHAR},
+                </if>
+                <if test="losedate != null">
+                    clientLoseDate = #{losedate,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   clientCode = #{code,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientinfo">
+        update clientinfo
+        set 
+            clientName =  #{name,jdbcType=VARCHAR},
+            clientAreaID =  #{areaid,jdbcType=INTEGER},
+            clientCustID =  #{custid,jdbcType=INTEGER},
+            clientLevelID =  #{levelid,jdbcType=INTEGER},
+            clientContentment =  #{contentment,jdbcType=INTEGER},
+            clientCredit =  #{credit,jdbcType=OTHER},
+            clientAddress =  #{address,jdbcType=VARCHAR},
+            clientDakCode =  #{dakcode,jdbcType=VARCHAR},
+            clientTel =  #{tel,jdbcType=VARCHAR},
+            clientFax =  #{fax,jdbcType=VARCHAR},
+            clientNet =  #{net,jdbcType=VARCHAR},
+            clientCharter =  #{charter,jdbcType=VARCHAR},
+            clientCorporation =  #{corporation,jdbcType=VARCHAR},
+            clientBankroll =  #{bankroll,jdbcType=INTEGER},
+            clientTurnoverYear =  #{turnoveryear,jdbcType=INTEGER},
+            clientBank =  #{bank,jdbcType=VARCHAR},
+            clientAccounts =  #{accounts,jdbcType=VARCHAR},
+            clientNativeTax =  #{nativetax,jdbcType=VARCHAR},
+            clientCountryTax =  #{countrytax,jdbcType=VARCHAR},
+            clientState =  #{state,jdbcType=INTEGER},
+            clientLoseReason =  #{losereason,jdbcType=VARCHAR},
+            clientLoseDate =  #{losedate,jdbcType=VARCHAR}
+        where   clientCode = #{code,jdbcType=VARCHAR} 
+    </update>
+</mapper>

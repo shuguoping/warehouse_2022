@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo.mapper.ClientlinkmanMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientlinkman">
+            <id property="linkmanid" column="clientLinkmanID" jdbcType="INTEGER"/>
+            <result property="linkmanname" column="clientLinkmanName" jdbcType="VARCHAR"/>
+            <result property="linkmansex" column="clientLinkmanSex" jdbcType="INTEGER"/>
+            <result property="linkmanjob" column="clientLinkmanJob" jdbcType="VARCHAR"/>
+            <result property="linkmantel" column="clientLinkmanTel" jdbcType="VARCHAR"/>
+            <result property="linkmanmoblie" column="clientLinkmanMoblie" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="code" column="clientCode" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        clientLinkmanID,clientLinkmanName,clientLinkmanSex,
+        clientLinkmanJob,clientLinkmanTel,clientLinkmanMoblie,
+        remark,clientCode
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from clientlinkman
+        where  clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from clientlinkman
+        where  clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="clientLinkmanID" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
+        insert into clientlinkman
+        ( clientLinkmanID,clientLinkmanName,clientLinkmanSex
+        ,clientLinkmanJob,clientLinkmanTel,clientLinkmanMoblie
+        ,remark,clientCode)
+        values (#{linkmanid,jdbcType=INTEGER},#{linkmanname,jdbcType=VARCHAR},#{linkmansex,jdbcType=INTEGER}
+        ,#{linkmanjob,jdbcType=VARCHAR},#{linkmantel,jdbcType=VARCHAR},#{linkmanmoblie,jdbcType=VARCHAR}
+        ,#{remark,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="clientLinkmanID" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
+        insert into clientlinkman
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="linkmanid != null">clientLinkmanID,</if>
+                <if test="linkmanname != null">clientLinkmanName,</if>
+                <if test="linkmansex != null">clientLinkmanSex,</if>
+                <if test="linkmanjob != null">clientLinkmanJob,</if>
+                <if test="linkmantel != null">clientLinkmanTel,</if>
+                <if test="linkmanmoblie != null">clientLinkmanMoblie,</if>
+                <if test="remark != null">remark,</if>
+                <if test="code != null">clientCode,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="linkmanid != null">#{linkmanid,jdbcType=INTEGER},</if>
+                <if test="linkmanname != null">#{linkmanname,jdbcType=VARCHAR},</if>
+                <if test="linkmansex != null">#{linkmansex,jdbcType=INTEGER},</if>
+                <if test="linkmanjob != null">#{linkmanjob,jdbcType=VARCHAR},</if>
+                <if test="linkmantel != null">#{linkmantel,jdbcType=VARCHAR},</if>
+                <if test="linkmanmoblie != null">#{linkmanmoblie,jdbcType=VARCHAR},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+                <if test="code != null">#{code,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.entity.Clientlinkman">
+        update clientlinkman
+        <set>
+                <if test="linkmanname != null">
+                    clientLinkmanName = #{linkmanname,jdbcType=VARCHAR},
+                </if>
+                <if test="linkmansex != null">
+                    clientLinkmanSex = #{linkmansex,jdbcType=INTEGER},
+                </if>
+                <if test="linkmanjob != null">
+                    clientLinkmanJob = #{linkmanjob,jdbcType=VARCHAR},
+                </if>
+                <if test="linkmantel != null">
+                    clientLinkmanTel = #{linkmantel,jdbcType=VARCHAR},
+                </if>
+                <if test="linkmanmoblie != null">
+                    clientLinkmanMoblie = #{linkmanmoblie,jdbcType=VARCHAR},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+                <if test="code != null">
+                    clientCode = #{code,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientlinkman">
+        update clientlinkman
+        set 
+            clientLinkmanName =  #{linkmanname,jdbcType=VARCHAR},
+            clientLinkmanSex =  #{linkmansex,jdbcType=INTEGER},
+            clientLinkmanJob =  #{linkmanjob,jdbcType=VARCHAR},
+            clientLinkmanTel =  #{linkmantel,jdbcType=VARCHAR},
+            clientLinkmanMoblie =  #{linkmanmoblie,jdbcType=VARCHAR},
+            remark =  #{remark,jdbcType=VARCHAR},
+            clientCode =  #{code,jdbcType=VARCHAR}
+        where   clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+    </update>
+</mapper>

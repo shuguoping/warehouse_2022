@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo.mapper.ClientserverMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientserver">
+            <id property="id" column="serverID" jdbcType="INTEGER"/>
+            <result property="typeid" column="serverTypeID" jdbcType="INTEGER"/>
+            <result property="title" column="serverTitle" jdbcType="VARCHAR"/>
+            <result property="clientcode" column="clientCode" jdbcType="VARCHAR"/>
+            <result property="status" column="serverStatus" jdbcType="INTEGER"/>
+            <result property="content" column="serverContent" jdbcType="VARCHAR"/>
+            <result property="createid" column="serverCreateID" jdbcType="INTEGER"/>
+            <result property="createdate" column="serverCreateDate" jdbcType="VARCHAR"/>
+            <result property="dueid" column="serverDueID" jdbcType="INTEGER"/>
+            <result property="duedate" column="serverDueDate" jdbcType="VARCHAR"/>
+            <result property="processing" column="serverProcessing" jdbcType="VARCHAR"/>
+            <result property="processingdate" column="processingDate" jdbcType="VARCHAR"/>
+            <result property="processingresult" column="processingResult" jdbcType="VARCHAR"/>
+            <result property="clientcontentment" column="clientContentment" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        serverID,serverTypeID,serverTitle,
+        clientCode,serverStatus,serverContent,
+        serverCreateID,serverCreateDate,serverDueID,
+        serverDueDate,serverProcessing,processingDate,
+        processingResult,clientContentment
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from clientserver
+        where  serverID = #{id,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from clientserver
+        where  serverID = #{id,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="serverID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
+        insert into clientserver
+        ( serverID,serverTypeID,serverTitle
+        ,clientCode,serverStatus,serverContent
+        ,serverCreateID,serverCreateDate,serverDueID
+        ,serverDueDate,serverProcessing,processingDate
+        ,processingResult,clientContentment)
+        values (#{id,jdbcType=INTEGER},#{typeid,jdbcType=INTEGER},#{title,jdbcType=VARCHAR}
+        ,#{clientcode,jdbcType=VARCHAR},#{status,jdbcType=INTEGER},#{content,jdbcType=VARCHAR}
+        ,#{createid,jdbcType=INTEGER},#{createdate,jdbcType=VARCHAR},#{dueid,jdbcType=INTEGER}
+        ,#{duedate,jdbcType=VARCHAR},#{processing,jdbcType=VARCHAR},#{processingdate,jdbcType=VARCHAR}
+        ,#{processingresult,jdbcType=VARCHAR},#{clientcontentment,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="serverID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
+        insert into clientserver
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">serverID,</if>
+                <if test="typeid != null">serverTypeID,</if>
+                <if test="title != null">serverTitle,</if>
+                <if test="clientcode != null">clientCode,</if>
+                <if test="status != null">serverStatus,</if>
+                <if test="content != null">serverContent,</if>
+                <if test="createid != null">serverCreateID,</if>
+                <if test="createdate != null">serverCreateDate,</if>
+                <if test="dueid != null">serverDueID,</if>
+                <if test="duedate != null">serverDueDate,</if>
+                <if test="processing != null">serverProcessing,</if>
+                <if test="processingdate != null">processingDate,</if>
+                <if test="processingresult != null">processingResult,</if>
+                <if test="clientcontentment != null">clientContentment,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+                <if test="typeid != null">#{typeid,jdbcType=INTEGER},</if>
+                <if test="title != null">#{title,jdbcType=VARCHAR},</if>
+                <if test="clientcode != null">#{clientcode,jdbcType=VARCHAR},</if>
+                <if test="status != null">#{status,jdbcType=INTEGER},</if>
+                <if test="content != null">#{content,jdbcType=VARCHAR},</if>
+                <if test="createid != null">#{createid,jdbcType=INTEGER},</if>
+                <if test="createdate != null">#{createdate,jdbcType=VARCHAR},</if>
+                <if test="dueid != null">#{dueid,jdbcType=INTEGER},</if>
+                <if test="duedate != null">#{duedate,jdbcType=VARCHAR},</if>
+                <if test="processing != null">#{processing,jdbcType=VARCHAR},</if>
+                <if test="processingdate != null">#{processingdate,jdbcType=VARCHAR},</if>
+                <if test="processingresult != null">#{processingresult,jdbcType=VARCHAR},</if>
+                <if test="clientcontentment != null">#{clientcontentment,jdbcType=INTEGER},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.entity.Clientserver">
+        update clientserver
+        <set>
+                <if test="typeid != null">
+                    serverTypeID = #{typeid,jdbcType=INTEGER},
+                </if>
+                <if test="title != null">
+                    serverTitle = #{title,jdbcType=VARCHAR},
+                </if>
+                <if test="clientcode != null">
+                    clientCode = #{clientcode,jdbcType=VARCHAR},
+                </if>
+                <if test="status != null">
+                    serverStatus = #{status,jdbcType=INTEGER},
+                </if>
+                <if test="content != null">
+                    serverContent = #{content,jdbcType=VARCHAR},
+                </if>
+                <if test="createid != null">
+                    serverCreateID = #{createid,jdbcType=INTEGER},
+                </if>
+                <if test="createdate != null">
+                    serverCreateDate = #{createdate,jdbcType=VARCHAR},
+                </if>
+                <if test="dueid != null">
+                    serverDueID = #{dueid,jdbcType=INTEGER},
+                </if>
+                <if test="duedate != null">
+                    serverDueDate = #{duedate,jdbcType=VARCHAR},
+                </if>
+                <if test="processing != null">
+                    serverProcessing = #{processing,jdbcType=VARCHAR},
+                </if>
+                <if test="processingdate != null">
+                    processingDate = #{processingdate,jdbcType=VARCHAR},
+                </if>
+                <if test="processingresult != null">
+                    processingResult = #{processingresult,jdbcType=VARCHAR},
+                </if>
+                <if test="clientcontentment != null">
+                    clientContentment = #{clientcontentment,jdbcType=INTEGER},
+                </if>
+        </set>
+        where   serverID = #{id,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientserver">
+        update clientserver
+        set 
+            serverTypeID =  #{typeid,jdbcType=INTEGER},
+            serverTitle =  #{title,jdbcType=VARCHAR},
+            clientCode =  #{clientcode,jdbcType=VARCHAR},
+            serverStatus =  #{status,jdbcType=INTEGER},
+            serverContent =  #{content,jdbcType=VARCHAR},
+            serverCreateID =  #{createid,jdbcType=INTEGER},
+            serverCreateDate =  #{createdate,jdbcType=VARCHAR},
+            serverDueID =  #{dueid,jdbcType=INTEGER},
+            serverDueDate =  #{duedate,jdbcType=VARCHAR},
+            serverProcessing =  #{processing,jdbcType=VARCHAR},
+            processingDate =  #{processingdate,jdbcType=VARCHAR},
+            processingResult =  #{processingresult,jdbcType=VARCHAR},
+            clientContentment =  #{clientcontentment,jdbcType=INTEGER}
+        where   serverID = #{id,jdbcType=INTEGER} 
+    </update>
+</mapper>

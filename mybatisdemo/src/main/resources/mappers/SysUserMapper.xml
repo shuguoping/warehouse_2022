@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.mybatisdemo.mapper.SysUserMapper">
+    <resultMap id="basicMap" type="com.example.mybatisdemo.entity.SysUser">
+        <id column="userID" property="userID"></id>
+    </resultMap>
+    <!--statment-->
+    <select id="getById" resultType="com.example.mybatisdemo.entity.SysUser">
+        select * from sysuser where userID = #{id}
+    </select>
+
+    <select id="getAll" resultMap="basicMap">
+        select * from sysuser
+    </select>
+
+    <insert id="insert">
+        insert into sysuser(userID, userName, userPassword, userRoleId, userFlag)
+        values(#{userID},#{userName},#{userPassword},#{userRoleId},#{userFlag})
+    </insert>
+
+    <update id="update">
+        update sysuser set userName = #{userName},userPassword=#{userPassword},
+                           userRoleId = #{userRoleId},userFlag=#{userFlag}
+        where userID = #{userID}
+    </update>
+
+    <delete id="delete">
+        delete from sysuser where userID = #{userID}
+    </delete>
+
+    <select id="login" resultType="com.example.mybatisdemo.entity.SysUser">
+        select * from sysuser where userName = #{userName} and userPassword = #{userPassword}
+    </select>
+</mapper>

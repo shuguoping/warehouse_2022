@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo.mapper.DataservertypeMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Dataservertype">
+            <id property="id" column="dstID" jdbcType="INTEGER"/>
+            <result property="name" column="dstName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        dstID,dstName
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from dataservertype
+        where  dstID = #{id,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from dataservertype
+        where  dstID = #{id,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="dstID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
+        insert into dataservertype
+        ( dstID,dstName)
+        values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="dstID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
+        insert into dataservertype
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">dstID,</if>
+                <if test="name != null">dstName,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=INTEGER},</if>
+                <if test="name != null">#{name,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.entity.Dataservertype">
+        update dataservertype
+        <set>
+                <if test="name != null">
+                    dstName = #{name,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   dstID = #{id,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Dataservertype">
+        update dataservertype
+        set 
+            dstName =  #{name,jdbcType=VARCHAR}
+        where   dstID = #{id,jdbcType=INTEGER} 
+    </update>
+</mapper>

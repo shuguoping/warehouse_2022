@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatisdemo.mapper.ClientreprieveloseMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientreprievelose">
+            <id property="reprieveloseid" column="clientReprieveLoseID" jdbcType="INTEGER"/>
+            <result property="reprievestep" column="reprieveStep" jdbcType="VARCHAR"/>
+            <result property="code" column="clientCode" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        clientReprieveLoseID,reprieveStep,clientCode
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from clientreprievelose
+        where  clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from clientreprievelose
+        where  clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="clientReprieveLoseID" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
+        insert into clientreprievelose
+        ( clientReprieveLoseID,reprieveStep,clientCode
+        )
+        values (#{reprieveloseid,jdbcType=INTEGER},#{reprievestep,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="clientReprieveLoseID" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
+        insert into clientreprievelose
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="reprieveloseid != null">clientReprieveLoseID,</if>
+                <if test="reprievestep != null">reprieveStep,</if>
+                <if test="code != null">clientCode,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="reprieveloseid != null">#{reprieveloseid,jdbcType=INTEGER},</if>
+                <if test="reprievestep != null">#{reprievestep,jdbcType=VARCHAR},</if>
+                <if test="code != null">#{code,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatisdemo.entity.Clientreprievelose">
+        update clientreprievelose
+        <set>
+                <if test="reprievestep != null">
+                    reprieveStep = #{reprievestep,jdbcType=VARCHAR},
+                </if>
+                <if test="code != null">
+                    clientCode = #{code,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientreprievelose">
+        update clientreprievelose
+        set 
+            reprieveStep =  #{reprievestep,jdbcType=VARCHAR},
+            clientCode =  #{code,jdbcType=VARCHAR}
+        where   clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+    </update>
+</mapper>
