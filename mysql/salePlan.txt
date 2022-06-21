@@ -6,3 +6,7 @@ CREATE TABLE salePlan
   `planResult` varchar(200) NULL COMMENT '执行结果',
   PRIMARY KEY (`planID`)
 );
+
+INSERT INTO `saleplan` VALUES ('1', '42', '准备在6月12日开始初步接触，了解客户意向。', null);
+INSERT INTO `saleplan` VALUES ('2', '42', '两天后请客户吃饭。', null);
+INSERT INTO `saleplan` VALUES ('3', '42', '再两天后给客户推介产品。', null);
