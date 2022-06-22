@@ -45,7 +45,7 @@ public class SysUserTest {
 
     @Test //删除
     void testSysUserDelete() {
-        int n = sysUserMapper.delete(10);
+        int n = sysUserMapper.delete(11);
         System.out.println(n);
     }
 

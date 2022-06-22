@@ -8,11 +8,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SysUser {
-    private Integer userID;
-    private String userName;
-    private String userPassword;
-    private Integer userRoleId;
-    private Integer userFlag;
+public class Result<T> {
+    private String code = "200";
+    private String message = "";
+    private T data;
 
+    public Result(T data){
+        this.data = data;
+    }
 }

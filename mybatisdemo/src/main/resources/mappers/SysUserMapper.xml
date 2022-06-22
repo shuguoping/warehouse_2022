@@ -5,7 +5,7 @@
         <id column="userID" property="userID"></id>
     </resultMap>
     <!--statment-->
-    <select id="getById" resultType="com.example.mybatisdemo.entity.SysUser">
+    <select id="getById" resultMap="basicMap">
         select * from sysuser where userID = #{id}
     </select>
 

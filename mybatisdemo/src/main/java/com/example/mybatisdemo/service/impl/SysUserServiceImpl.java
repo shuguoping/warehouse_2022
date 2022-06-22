@@ -14,6 +14,7 @@ import java.util.List;
 public class SysUserServiceImpl implements SysUserService {
     //依赖注入
     @Resource
+
     private SysUserMapper sysUserMapper;
 
     @Override
@@ -27,4 +28,25 @@ public class SysUserServiceImpl implements SysUserService {
 
         return pageInfo;
     }
+
+    @Override
+    public SysUser getById(int id) {
+        return sysUserMapper.getById(id);
+    }
+
+    @Override
+    public int insert(SysUser sysUser) {
+        return sysUserMapper.insert(sysUser);
+    }
+
+    @Override
+    public int update(SysUser sysUser) {
+        return sysUserMapper.update(sysUser);
+    }
+
+    @Override
+    public int delete(int id){
+        return sysUserMapper.delete(id);
+    }
+
 }

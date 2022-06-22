@@ -21,11 +21,26 @@ public class SaleChanceTest {
         System.out.println(salechance);
     }
 
-    /*@Test //全部查询，在不关联时可使用
+
+    @Test //全部查询
     void testSalechanceGetAll() {
         List<Salechance> all = salechanceMapper.getAll();
-        System.out.println(all);
-    }*/
+        for (Salechance salechance: all) {
+            System.out.println(salechance.getId()+"," +
+                               salechance.getSource()+","+
+                               salechance.getCustname()+","+
+                               salechance.getTitle()+","+
+                               salechance.getRate()+","+
+                               salechance.getLinkman()+","+
+                               salechance.getTel()+","+
+                               salechance.getDesc()+","+
+                               salechance.getCreateid()+","+
+                               salechance.getCreatedate()+","+
+                               salechance.getDueid()+","+
+                               salechance.getDuedate()+","+
+                               salechance.getStatus());
+        }
+    }
 
     /*@Test //增加
     void testSalechanceinsert(){
@@ -53,4 +68,5 @@ public class SaleChanceTest {
             System.out.println(saleplan.getId()+","+saleplan.getChcid()+","+saleplan.getTodo());
         }
     }
+
 }
