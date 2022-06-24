@@ -10,3 +10,18 @@ CREATE TABLE clientLinkman
   `clientCode` varchar(11) NOT NULL COMMENT '客户编号',
   PRIMARY KEY (`clientLinkmanID`)
 );
+INSERT INTO `clientLinkman` VALUES ('1','宁总','1','总经理','12345678','13300000000','联系时间以东四区为准','KH991002003');
+INSERT INTO `clientLinkman` VALUES ('2','陈总','0','总经理','13345678','13300000001',null,'KH011112001');
+INSERT INTO `clientLinkman` VALUES ('3','贺总','1','总经理','14345678','13300000002',null,'KH010305004');
+INSERT INTO `clientLinkman` VALUES ('4','习大','0','总经理','15345678','13300000003',null,'KH020708002');
+INSERT INTO `clientLinkman` VALUES ('5','黄三','1','总经理','16345678','13300000004',null,'KH030907005');
+INSERT INTO `clientLinkman` VALUES ('6','黑毛','0','总经理','17345678','13300000005','联系时间以西八区为准','KH980626006');
+INSERT INTO `clientLinkman` VALUES ('7','王三','1','总经理','18345678','13300000006',null,'KH990618007');
+INSERT INTO `clientLinkman` VALUES ('8','李四','0','总经理','19345678','13300000007',null,'KH970930008');
+INSERT INTO `clientLinkman` VALUES ('9','王天','1','总经理','12245678','13300000008','联系时间以东九区为准','KH001126009');
+INSERT INTO `clientLinkman` VALUES ('10','王珊','0','总经理','12545678','13300000009',null,'KH030714010');
+INSERT INTO `clientLinkman` VALUES ('11','李玉','1','总经理','12645678','13310000000',null,'KH010307011');
+INSERT INTO `clientLinkman` VALUES ('12','徐琛','0','总经理','12745678','13320000000',null,'KH020509012');
+INSERT INTO `clientLinkman` VALUES ('13','因铭','1','总经理','12845678','13330000000',null,'KH010728013');
+INSERT INTO `clientLinkman` VALUES ('14','顾佳','1','总经理','12945678','13340000000','联系时间以东十区为准','KH000416014');
+INSERT INTO `clientLinkman` VALUES ('15','刘智','1','总经理','12045678','13350000000',null,'KH020624015');

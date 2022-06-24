@@ -5,3 +5,8 @@ CREATE TABLE clientReprieveLose
   `clientCode` varchar(11) NOT NULL COMMENT '客户编号',
   PRIMARY KEY (`clientReprieveLoseID`)
 );
+INSERT INTO `clientReprieveLose` VALUES ('1','给足够多的钱帮助他脱离困境','KH991002003');
+INSERT INTO `clientReprieveLose` VALUES ('2','给足够多的钱帮助他脱离困境','KH030907005');
+INSERT INTO `clientReprieveLose` VALUES ('3','给足够多的钱帮助他脱离困境','KH980626006');
+INSERT INTO `clientReprieveLose` VALUES ('4','给足够多的钱帮助他脱离困境','KH970930008');
+INSERT INTO `clientReprieveLose` VALUES ('5','给足够多的钱帮助他脱离困境','KH001126009');

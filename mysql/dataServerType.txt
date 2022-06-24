@@ -4,3 +4,6 @@ CREATE TABLE dataServerType
   `dstName` varchar(50) NOT NULL COMMENT '服务类别名称\r\n1、咨询\r\n2、投诉\r\n3、建议',
   PRIMARY KEY (`dstID`)
 );
+INSERT INTO `dataServerType` VALUES ('1','咨询');
+INSERT INTO `dataServerType` VALUES ('2','投诉');
+INSERT INTO `dataServerType` VALUES ('3','建议');

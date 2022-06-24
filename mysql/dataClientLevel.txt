@@ -4,3 +4,7 @@ CREATE TABLE dataClientLevel
   `dclName` varchar(50) NOT NULL COMMENT '企业客户等级名称',
   PRIMARY KEY (`dclID`)
 );
+INSERT INTO `dataClientLevel` VALUES ('1','普通客户');
+INSERT INTO `dataClientLevel` VALUES ('2','大客户');
+INSERT INTO `dataClientLevel` VALUES ('3','合作伙伴');
+INSERT INTO `dataClientLevel` VALUES ('4','战略合作伙伴');

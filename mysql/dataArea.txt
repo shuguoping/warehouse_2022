@@ -4,3 +4,8 @@ CREATE TABLE dataArea
   `daName` varchar(50) NOT NULL COMMENT '地区名称',
   PRIMARY KEY (`daID`)
 );
+INSERT INTO `dataArea` VALUES ('1','北京');
+INSERT INTO `dataArea` VALUES ('2','华北');
+INSERT INTO `dataArea` VALUES ('3','中南');
+INSERT INTO `dataArea` VALUES ('4','东北');
+INSERT INTO `dataArea` VALUES ('5','西部');

@@ -9,3 +9,14 @@ CREATE TABLE orders
   `remark` varchar(100) NULL COMMENT '备注',
   PRIMARY KEY (`ordersID`)
 );
+INSERT INTO `orders` VALUES ('1','20220108','上海市奉贤区金钱公路652号','1','KH991002003','2052440','加急');
+INSERT INTO `orders` VALUES ('2','20190605','河北省邯郸市馆陶县虹山中路487号','1','KH980626006','100','客户态度一般');
+INSERT INTO `orders` VALUES ('3','20220108','浙江省温州市平阳县上海路728号','2','KH030714010','328888','敏感肌适用');
+INSERT INTO `orders` VALUES ('4','20210427','山东省淄博市高青县工业渠路496号','2','KH010307011','919990',null);
+INSERT INTO `orders` VALUES ('5','20180108','四川省绵阳市盐亭县长征路679号','2','KH020509012','57337','老客户');
+INSERT INTO `orders` VALUES ('6','20200918','福建省福州市福清区翠湖北路791号','2','KH010728013','64795',null);
+INSERT INTO `orders` VALUES ('7','20210811','陕西省西安市未央区钢花路383号','2','KH000416014','52001',null);
+INSERT INTO `orders` VALUES ('8','20220114','广东省深圳市龙岗区罗湖公路121号','1','KH970930008','2116722','紧急');
+INSERT INTO `orders` VALUES ('9','20170125','湖南省岳阳市岳阳县迎宾东路741号','2','KH991002003','109714',null);
+INSERT INTO `orders` VALUES ('10','20190624','广东省广州市天河区东圃镇前进东路1号','1','KH030907005','713477','未回款已久，风险较大');
+INSERT INTO `orders` VALUES ('11','20220906','浙江省杭州市上城区万松岭路81号','1','KH990618007','709',null);
