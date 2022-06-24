@@ -85,7 +85,7 @@ class MybatisdemoApplicationTests {
 
     @Test
     void testSysuserPaged() {
-        PageInfo<SysUser> pageInfo = sysUserService.getPaged(1, 3);
-        System.out.println(pageInfo);
+        /*PageInfo<SysUser> pageInfo = sysUserService.getPaged(1, 3);
+        System.out.println(pageInfo);*/
     }
 }

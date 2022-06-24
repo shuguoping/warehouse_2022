@@ -5,7 +5,7 @@
 <mapper namespace="com.example.mybatisdemo.mapper.ClientlinkmanMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientlinkman">
-            <id property="linkmanid" column="clientLinkmanID" jdbcType="INTEGER"/>
+            <id property="linkmanid" column="clientLinkmanId" jdbcType="INTEGER"/>
             <result property="linkmanname" column="clientLinkmanName" jdbcType="VARCHAR"/>
             <result property="linkmansex" column="clientLinkmanSex" jdbcType="INTEGER"/>
             <result property="linkmanjob" column="clientLinkmanJob" jdbcType="VARCHAR"/>
@@ -16,7 +16,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        clientLinkmanID,clientLinkmanName,clientLinkmanSex,
+        clientLinkmanId,clientLinkmanName,clientLinkmanSex,
         clientLinkmanJob,clientLinkmanTel,clientLinkmanMoblie,
         remark,clientCode
     </sql>
@@ -25,26 +25,26 @@
         select
         <include refid="Base_Column_List" />
         from clientlinkman
-        where  clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+        where  clientLinkmanId = #{linkmanid,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from clientlinkman
-        where  clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+        where  clientLinkmanId = #{linkmanid,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="clientLinkmanID" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="clientLinkmanId" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
         insert into clientlinkman
-        ( clientLinkmanID,clientLinkmanName,clientLinkmanSex
+        ( clientLinkmanId,clientLinkmanName,clientLinkmanSex
         ,clientLinkmanJob,clientLinkmanTel,clientLinkmanMoblie
         ,remark,clientCode)
         values (#{linkmanid,jdbcType=INTEGER},#{linkmanname,jdbcType=VARCHAR},#{linkmansex,jdbcType=INTEGER}
         ,#{linkmanjob,jdbcType=VARCHAR},#{linkmantel,jdbcType=VARCHAR},#{linkmanmoblie,jdbcType=VARCHAR}
         ,#{remark,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="clientLinkmanID" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="clientLinkmanId" keyProperty="linkmanid" parameterType="com.example.mybatisdemo.entity.Clientlinkman" useGeneratedKeys="true">
         insert into clientlinkman
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="linkmanid != null">clientLinkmanID,</if>
+                <if test="linkmanid != null">clientLinkmanId,</if>
                 <if test="linkmanname != null">clientLinkmanName,</if>
                 <if test="linkmansex != null">clientLinkmanSex,</if>
                 <if test="linkmanjob != null">clientLinkmanJob,</if>
@@ -89,7 +89,7 @@
                     clientCode = #{code,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+        where   clientLinkmanId = #{linkmanid,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientlinkman">
         update clientlinkman
@@ -101,6 +101,6 @@
             clientLinkmanMoblie =  #{linkmanmoblie,jdbcType=VARCHAR},
             remark =  #{remark,jdbcType=VARCHAR},
             clientCode =  #{code,jdbcType=VARCHAR}
-        where   clientLinkmanID = #{linkmanid,jdbcType=INTEGER} 
+        where   clientLinkmanId = #{linkmanid,jdbcType=INTEGER} 
     </update>
 </mapper>

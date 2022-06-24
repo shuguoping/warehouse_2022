@@ -5,7 +5,7 @@
 <mapper namespace="com.example.mybatisdemo.mapper.OrdersMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Orders">
-            <id property="id" column="ordersID" jdbcType="INTEGER"/>
+            <id property="id" column="ordersId" jdbcType="INTEGER"/>
             <result property="date" column="ordersDate" jdbcType="VARCHAR"/>
             <result property="address" column="address" jdbcType="VARCHAR"/>
             <result property="state" column="ordersState" jdbcType="INTEGER"/>
@@ -15,7 +15,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        ordersID,ordersDate,address,
+        ordersId,ordersDate,address,
         ordersState,clientCode,ordersTotal,
         remark
     </sql>
@@ -24,26 +24,26 @@
         select
         <include refid="Base_Column_List" />
         from orders
-        where  ordersID = #{id,jdbcType=INTEGER} 
+        where  ordersId = #{id,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from orders
-        where  ordersID = #{id,jdbcType=INTEGER} 
+        where  ordersId = #{id,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="ordersID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Orders" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="ordersId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Orders" useGeneratedKeys="true">
         insert into orders
-        ( ordersID,ordersDate,address
+        ( ordersId,ordersDate,address
         ,ordersState,clientCode,ordersTotal
         ,remark)
         values (#{id,jdbcType=INTEGER},#{date,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR}
         ,#{state,jdbcType=INTEGER},#{clientcode,jdbcType=VARCHAR},#{total,jdbcType=INTEGER}
         ,#{remark,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="ordersID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Orders" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="ordersId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Orders" useGeneratedKeys="true">
         insert into orders
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">ordersID,</if>
+                <if test="id != null">ordersId,</if>
                 <if test="date != null">ordersDate,</if>
                 <if test="address != null">address,</if>
                 <if test="state != null">ordersState,</if>
@@ -83,7 +83,7 @@
                     remark = #{remark,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   ordersID = #{id,jdbcType=INTEGER} 
+        where   ordersId = #{id,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Orders">
         update orders
@@ -94,6 +94,6 @@
             clientCode =  #{clientcode,jdbcType=VARCHAR},
             ordersTotal =  #{total,jdbcType=INTEGER},
             remark =  #{remark,jdbcType=VARCHAR}
-        where   ordersID = #{id,jdbcType=INTEGER} 
+        where   ordersId = #{id,jdbcType=INTEGER} 
     </update>
 </mapper>

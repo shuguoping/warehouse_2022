@@ -13,4 +13,5 @@ public interface SysUserMapper {
     int update(SysUser sysUser);
     int delete(int id);
     SysUser login(@Param("userName") String userName, @Param("userPassword") String userPassword);
+    List<SysUser> search(@Param("userName") String userName,@Param("userRoleId") Integer userRoleId);
 }

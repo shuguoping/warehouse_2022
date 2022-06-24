@@ -7,9 +7,9 @@
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientinfo">
             <id property="code" column="clientCode" jdbcType="VARCHAR"/>
             <result property="name" column="clientName" jdbcType="VARCHAR"/>
-            <result property="areaid" column="clientAreaID" jdbcType="INTEGER"/>
-            <result property="custid" column="clientCustID" jdbcType="INTEGER"/>
-            <result property="levelid" column="clientLevelID" jdbcType="INTEGER"/>
+            <result property="areaid" column="clientAreaId" jdbcType="INTEGER"/>
+            <result property="custid" column="clientCustId" jdbcType="INTEGER"/>
+            <result property="levelid" column="clientLevelId" jdbcType="INTEGER"/>
             <result property="contentment" column="clientContentment" jdbcType="INTEGER"/>
             <result property="credit" column="clientCredit" jdbcType="OTHER"/>
             <result property="address" column="clientAddress" jdbcType="VARCHAR"/>
@@ -31,8 +31,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        clientCode,clientName,clientAreaID,
-        clientCustID,clientLevelID,clientContentment,
+        clientCode,clientName,clientAreaId,
+        clientCustId,clientLevelId,clientContentment,
         clientCredit,clientAddress,clientDakCode,
         clientTel,clientFax,clientNet,
         clientCharter,clientCorporation,clientBankroll,
@@ -54,8 +54,8 @@
     </delete>
     <insert id="insert" keyColumn="clientCode" keyProperty="code" parameterType="com.example.mybatisdemo.entity.Clientinfo" useGeneratedKeys="true">
         insert into clientinfo
-        ( clientCode,clientName,clientAreaID
-        ,clientCustID,clientLevelID,clientContentment
+        ( clientCode,clientName,clientAreaId
+        ,clientCustId,clientLevelId,clientContentment
         ,clientCredit,clientAddress,clientDakCode
         ,clientTel,clientFax,clientNet
         ,clientCharter,clientCorporation,clientBankroll
@@ -76,9 +76,9 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
                 <if test="code != null">clientCode,</if>
                 <if test="name != null">clientName,</if>
-                <if test="areaid != null">clientAreaID,</if>
-                <if test="custid != null">clientCustID,</if>
-                <if test="levelid != null">clientLevelID,</if>
+                <if test="areaid != null">clientAreaId,</if>
+                <if test="custid != null">clientCustId,</if>
+                <if test="levelid != null">clientLevelId,</if>
                 <if test="contentment != null">clientContentment,</if>
                 <if test="credit != null">clientCredit,</if>
                 <if test="address != null">clientAddress,</if>
@@ -131,13 +131,13 @@
                     clientName = #{name,jdbcType=VARCHAR},
                 </if>
                 <if test="areaid != null">
-                    clientAreaID = #{areaid,jdbcType=INTEGER},
+                    clientAreaId = #{areaid,jdbcType=INTEGER},
                 </if>
                 <if test="custid != null">
-                    clientCustID = #{custid,jdbcType=INTEGER},
+                    clientCustId = #{custid,jdbcType=INTEGER},
                 </if>
                 <if test="levelid != null">
-                    clientLevelID = #{levelid,jdbcType=INTEGER},
+                    clientLevelId = #{levelid,jdbcType=INTEGER},
                 </if>
                 <if test="contentment != null">
                     clientContentment = #{contentment,jdbcType=INTEGER},
@@ -200,9 +200,9 @@
         update clientinfo
         set 
             clientName =  #{name,jdbcType=VARCHAR},
-            clientAreaID =  #{areaid,jdbcType=INTEGER},
-            clientCustID =  #{custid,jdbcType=INTEGER},
-            clientLevelID =  #{levelid,jdbcType=INTEGER},
+            clientAreaId =  #{areaid,jdbcType=INTEGER},
+            clientCustId =  #{custid,jdbcType=INTEGER},
+            clientLevelId =  #{levelid,jdbcType=INTEGER},
             clientContentment =  #{contentment,jdbcType=INTEGER},
             clientCredit =  #{credit,jdbcType=OTHER},
             clientAddress =  #{address,jdbcType=VARCHAR},

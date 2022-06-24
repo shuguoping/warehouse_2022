@@ -37,7 +37,7 @@ public class SysUserTest {
         System.out.println(n);
     }
 
-    @Test //修改
+    @Test //更新
     void testSysUserUpdate() {
         int n = sysUserMapper.update(new SysUser(10,"tom","123456",1,0));
         System.out.println(n);
@@ -57,7 +57,7 @@ public class SysUserTest {
 
     @Test //分页查询
     void testSysuserPaged() {
-        PageInfo<SysUser> pageInfo = sysUserService.getPaged(1, 3);
-        System.out.println(pageInfo);
+        /*PageInfo<SysUser> pageInfo = sysUserService.getPaged(1, 3);
+        System.out.println(pageInfo);*/
     }
 }

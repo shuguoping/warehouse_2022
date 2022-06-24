@@ -5,37 +5,37 @@
 <mapper namespace="com.example.mybatisdemo.mapper.ClientreprieveloseMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientreprievelose">
-            <id property="reprieveloseid" column="clientReprieveLoseID" jdbcType="INTEGER"/>
+            <id property="reprieveloseid" column="clientReprieveLoseId" jdbcType="INTEGER"/>
             <result property="reprievestep" column="reprieveStep" jdbcType="VARCHAR"/>
             <result property="code" column="clientCode" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        clientReprieveLoseID,reprieveStep,clientCode
+        clientReprieveLoseId,reprieveStep,clientCode
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from clientreprievelose
-        where  clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+        where  clientReprieveLoseId = #{reprieveloseid,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from clientreprievelose
-        where  clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+        where  clientReprieveLoseId = #{reprieveloseid,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="clientReprieveLoseID" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="clientReprieveLoseId" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
         insert into clientreprievelose
-        ( clientReprieveLoseID,reprieveStep,clientCode
+        ( clientReprieveLoseId,reprieveStep,clientCode
         )
         values (#{reprieveloseid,jdbcType=INTEGER},#{reprievestep,jdbcType=VARCHAR},#{code,jdbcType=VARCHAR}
         )
     </insert>
-    <insert id="insertSelective" keyColumn="clientReprieveLoseID" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="clientReprieveLoseId" keyProperty="reprieveloseid" parameterType="com.example.mybatisdemo.entity.Clientreprievelose" useGeneratedKeys="true">
         insert into clientreprievelose
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="reprieveloseid != null">clientReprieveLoseID,</if>
+                <if test="reprieveloseid != null">clientReprieveLoseId,</if>
                 <if test="reprievestep != null">reprieveStep,</if>
                 <if test="code != null">clientCode,</if>
         </trim>
@@ -55,13 +55,13 @@
                     clientCode = #{code,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+        where   clientReprieveLoseId = #{reprieveloseid,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientreprievelose">
         update clientreprievelose
         set 
             reprieveStep =  #{reprievestep,jdbcType=VARCHAR},
             clientCode =  #{code,jdbcType=VARCHAR}
-        where   clientReprieveLoseID = #{reprieveloseid,jdbcType=INTEGER} 
+        where   clientReprieveLoseId = #{reprieveloseid,jdbcType=INTEGER} 
     </update>
 </mapper>

@@ -5,34 +5,34 @@
 <mapper namespace="com.example.mybatisdemo.mapper.DataareaMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Dataarea">
-            <id property="daid" column="daID" jdbcType="INTEGER"/>
+            <id property="daid" column="daId" jdbcType="INTEGER"/>
             <result property="daname" column="daName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        daID,daName
+        daId,daName
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from dataarea
-        where  daID = #{daid,jdbcType=INTEGER} 
+        where  daId = #{daid,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from dataarea
-        where  daID = #{daid,jdbcType=INTEGER} 
+        where  daId = #{daid,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="daID" keyProperty="daid" parameterType="com.example.mybatisdemo.entity.Dataarea" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="daId" keyProperty="daid" parameterType="com.example.mybatisdemo.entity.Dataarea" useGeneratedKeys="true">
         insert into dataarea
-        ( daID,daName)
+        ( daId,daName)
         values (#{daid,jdbcType=INTEGER},#{daname,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="daID" keyProperty="daid" parameterType="com.example.mybatisdemo.entity.Dataarea" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="daId" keyProperty="daid" parameterType="com.example.mybatisdemo.entity.Dataarea" useGeneratedKeys="true">
         insert into dataarea
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="daid != null">daID,</if>
+                <if test="daid != null">daId,</if>
                 <if test="daname != null">daName,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -47,12 +47,12 @@
                     daName = #{daname,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   daID = #{daid,jdbcType=INTEGER} 
+        where   daId = #{daid,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Dataarea">
         update dataarea
         set 
             daName =  #{daname,jdbcType=VARCHAR}
-        where   daID = #{daid,jdbcType=INTEGER} 
+        where   daId = #{daid,jdbcType=INTEGER} 
     </update>
 </mapper>

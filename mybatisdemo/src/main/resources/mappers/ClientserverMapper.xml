@@ -5,15 +5,15 @@
 <mapper namespace="com.example.mybatisdemo.mapper.ClientserverMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Clientserver">
-            <id property="id" column="serverID" jdbcType="INTEGER"/>
-            <result property="typeid" column="serverTypeID" jdbcType="INTEGER"/>
+            <id property="id" column="serverId" jdbcType="INTEGER"/>
+            <result property="typeid" column="serverTypeId" jdbcType="INTEGER"/>
             <result property="title" column="serverTitle" jdbcType="VARCHAR"/>
             <result property="clientcode" column="clientCode" jdbcType="VARCHAR"/>
             <result property="status" column="serverStatus" jdbcType="INTEGER"/>
             <result property="content" column="serverContent" jdbcType="VARCHAR"/>
-            <result property="createid" column="serverCreateID" jdbcType="INTEGER"/>
+            <result property="createid" column="serverCreateId" jdbcType="INTEGER"/>
             <result property="createdate" column="serverCreateDate" jdbcType="VARCHAR"/>
-            <result property="dueid" column="serverDueID" jdbcType="INTEGER"/>
+            <result property="dueid" column="serverDueId" jdbcType="INTEGER"/>
             <result property="duedate" column="serverDueDate" jdbcType="VARCHAR"/>
             <result property="processing" column="serverProcessing" jdbcType="VARCHAR"/>
             <result property="processingdate" column="processingDate" jdbcType="VARCHAR"/>
@@ -22,9 +22,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        serverID,serverTypeID,serverTitle,
+        serverId,serverTypeId,serverTitle,
         clientCode,serverStatus,serverContent,
-        serverCreateID,serverCreateDate,serverDueID,
+        serverCreateId,serverCreateDate,serverDueId,
         serverDueDate,serverProcessing,processingDate,
         processingResult,clientContentment
     </sql>
@@ -33,18 +33,18 @@
         select
         <include refid="Base_Column_List" />
         from clientserver
-        where  serverID = #{id,jdbcType=INTEGER} 
+        where  serverId = #{id,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from clientserver
-        where  serverID = #{id,jdbcType=INTEGER} 
+        where  serverId = #{id,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="serverID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="serverId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
         insert into clientserver
-        ( serverID,serverTypeID,serverTitle
+        ( serverId,serverTypeId,serverTitle
         ,clientCode,serverStatus,serverContent
-        ,serverCreateID,serverCreateDate,serverDueID
+        ,serverCreateId,serverCreateDate,serverDueId
         ,serverDueDate,serverProcessing,processingDate
         ,processingResult,clientContentment)
         values (#{id,jdbcType=INTEGER},#{typeid,jdbcType=INTEGER},#{title,jdbcType=VARCHAR}
@@ -53,18 +53,18 @@
         ,#{duedate,jdbcType=VARCHAR},#{processing,jdbcType=VARCHAR},#{processingdate,jdbcType=VARCHAR}
         ,#{processingresult,jdbcType=VARCHAR},#{clientcontentment,jdbcType=INTEGER})
     </insert>
-    <insert id="insertSelective" keyColumn="serverID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="serverId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Clientserver" useGeneratedKeys="true">
         insert into clientserver
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">serverID,</if>
-                <if test="typeid != null">serverTypeID,</if>
+                <if test="id != null">serverId,</if>
+                <if test="typeid != null">serverTypeId,</if>
                 <if test="title != null">serverTitle,</if>
                 <if test="clientcode != null">clientCode,</if>
                 <if test="status != null">serverStatus,</if>
                 <if test="content != null">serverContent,</if>
-                <if test="createid != null">serverCreateID,</if>
+                <if test="createid != null">serverCreateId,</if>
                 <if test="createdate != null">serverCreateDate,</if>
-                <if test="dueid != null">serverDueID,</if>
+                <if test="dueid != null">serverDueId,</if>
                 <if test="duedate != null">serverDueDate,</if>
                 <if test="processing != null">serverProcessing,</if>
                 <if test="processingdate != null">processingDate,</if>
@@ -92,7 +92,7 @@
         update clientserver
         <set>
                 <if test="typeid != null">
-                    serverTypeID = #{typeid,jdbcType=INTEGER},
+                    serverTypeId = #{typeid,jdbcType=INTEGER},
                 </if>
                 <if test="title != null">
                     serverTitle = #{title,jdbcType=VARCHAR},
@@ -107,13 +107,13 @@
                     serverContent = #{content,jdbcType=VARCHAR},
                 </if>
                 <if test="createid != null">
-                    serverCreateID = #{createid,jdbcType=INTEGER},
+                    serverCreateId = #{createid,jdbcType=INTEGER},
                 </if>
                 <if test="createdate != null">
                     serverCreateDate = #{createdate,jdbcType=VARCHAR},
                 </if>
                 <if test="dueid != null">
-                    serverDueID = #{dueid,jdbcType=INTEGER},
+                    serverDueId = #{dueid,jdbcType=INTEGER},
                 </if>
                 <if test="duedate != null">
                     serverDueDate = #{duedate,jdbcType=VARCHAR},
@@ -131,24 +131,24 @@
                     clientContentment = #{clientcontentment,jdbcType=INTEGER},
                 </if>
         </set>
-        where   serverID = #{id,jdbcType=INTEGER} 
+        where   serverId = #{id,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Clientserver">
         update clientserver
         set 
-            serverTypeID =  #{typeid,jdbcType=INTEGER},
+            serverTypeId =  #{typeid,jdbcType=INTEGER},
             serverTitle =  #{title,jdbcType=VARCHAR},
             clientCode =  #{clientcode,jdbcType=VARCHAR},
             serverStatus =  #{status,jdbcType=INTEGER},
             serverContent =  #{content,jdbcType=VARCHAR},
-            serverCreateID =  #{createid,jdbcType=INTEGER},
+            serverCreateId =  #{createid,jdbcType=INTEGER},
             serverCreateDate =  #{createdate,jdbcType=VARCHAR},
-            serverDueID =  #{dueid,jdbcType=INTEGER},
+            serverDueId =  #{dueid,jdbcType=INTEGER},
             serverDueDate =  #{duedate,jdbcType=VARCHAR},
             serverProcessing =  #{processing,jdbcType=VARCHAR},
             processingDate =  #{processingdate,jdbcType=VARCHAR},
             processingResult =  #{processingresult,jdbcType=VARCHAR},
             clientContentment =  #{clientcontentment,jdbcType=INTEGER}
-        where   serverID = #{id,jdbcType=INTEGER} 
+        where   serverId = #{id,jdbcType=INTEGER} 
     </update>
 </mapper>

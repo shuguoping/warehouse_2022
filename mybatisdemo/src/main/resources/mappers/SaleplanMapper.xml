@@ -5,20 +5,20 @@
 <mapper namespace="com.example.mybatisdemo.mapper.SaleplanMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Saleplan">
-            <id property="id" column="planID" jdbcType="INTEGER"/>
-            <result property="chcid" column="planChcID" jdbcType="INTEGER"/>
+            <id property="id" column="planId" jdbcType="INTEGER"/>
+            <result property="chcid" column="planChcId" jdbcType="INTEGER"/>
             <result property="todo" column="planTodo" jdbcType="VARCHAR"/>
             <result property="result" column="planResult" jdbcType="VARCHAR"/>
 
             <association
                     property="salechance"
-                    column="planChcID"
+                    column="planChcId"
                     select="com.example.mybatisdemo.mapper.SalechanceMapper.selectByPrimaryKey">
             </association>
     </resultMap>
 
     <sql id="Base_Column_List">
-        planID,planChcID,planTodo,
+        planId,planChcId,planTodo,
         planResult
     </sql>
 
@@ -26,32 +26,36 @@
         select
         <include refid="Base_Column_List" />
         from saleplan
-        where  planID = #{id,jdbcType=INTEGER} 
+        where  planId = #{id,jdbcType=INTEGER}
     </select>
     <!--被关联集合-->
     <select id="getByChanceId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from saleplan
-        where planChcID = #{planChcID}
+        where planChcId = #{planChcId}
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from saleplan
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from saleplan
-        where  planID = #{id,jdbcType=INTEGER} 
+        where  planId = #{id,jdbcType=INTEGER}
     </delete>
-    <insert id="insert" keyColumn="planID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Saleplan" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="planId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Saleplan" useGeneratedKeys="true">
         insert into saleplan
-        ( planID,planChcID,planTodo
+        ( planId,planChcId,planTodo
         ,planResult)
         values (#{id,jdbcType=INTEGER},#{chcid,jdbcType=INTEGER},#{todo,jdbcType=VARCHAR}
         ,#{result,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="planID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Saleplan" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="planId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Saleplan" useGeneratedKeys="true">
         insert into saleplan
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">planID,</if>
-                <if test="chcid != null">planChcID,</if>
+                <if test="id != null">planId,</if>
+                <if test="chcid != null">planChcId,</if>
                 <if test="todo != null">planTodo,</if>
                 <if test="result != null">planResult,</if>
         </trim>
@@ -66,7 +70,7 @@
         update saleplan
         <set>
                 <if test="chcid != null">
-                    planChcID = #{chcid,jdbcType=INTEGER},
+                    planChcId = #{chcid,jdbcType=INTEGER},
                 </if>
                 <if test="todo != null">
                     planTodo = #{todo,jdbcType=VARCHAR},
@@ -75,14 +79,14 @@
                     planResult = #{result,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   planID = #{id,jdbcType=INTEGER} 
+        where   planId = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Saleplan">
         update saleplan
         set 
-            planChcID =  #{chcid,jdbcType=INTEGER},
+            planChcId =  #{chcid,jdbcType=INTEGER},
             planTodo =  #{todo,jdbcType=VARCHAR},
             planResult =  #{result,jdbcType=VARCHAR}
-        where   planID = #{id,jdbcType=INTEGER} 
+        where   planId = #{id,jdbcType=INTEGER}
     </update>
 </mapper>

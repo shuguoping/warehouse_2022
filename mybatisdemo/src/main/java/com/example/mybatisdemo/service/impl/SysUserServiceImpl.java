@@ -14,18 +14,16 @@ import java.util.List;
 public class SysUserServiceImpl implements SysUserService {
     //依赖注入
     @Resource
-
     private SysUserMapper sysUserMapper;
 
     @Override
-    public PageInfo<SysUser> getPaged(int pageNum, int pageSize) {
+    public PageInfo<SysUser> getPaged(int pageNum, int pageSize,String userName,Integer userRoleId) {
         //对跟在其后的第一个查询语句进行分页
-        PageHelper.startPage(pageNum,pageSize);
+        PageHelper.startPage(pageNum, pageSize);
         //得到的就是分页后的数据，就不是查询所有的数据了
-        List<SysUser>list=sysUserMapper.getAll();
+        List<SysUser> list = sysUserMapper.search("%"+userName+"%",userRoleId);
         //基于list集合数据，创建了一个分页信息对象
-        PageInfo<SysUser> pageInfo=new PageInfo<>(list);
-
+        PageInfo<SysUser> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
 
@@ -36,6 +34,8 @@ public class SysUserServiceImpl implements SysUserService {
 
     @Override
     public int insert(SysUser sysUser) {
+        sysUser.setUserPassword("888888");
+        sysUser.setUserFlag(0);
         return sysUserMapper.insert(sysUser);
     }
 
@@ -49,4 +49,8 @@ public class SysUserServiceImpl implements SysUserService {
         return sysUserMapper.delete(id);
     }
 
+    @Override
+    public SysUser login(String username, String password) {
+        return sysUserMapper.login(username, password);
+    }
 }

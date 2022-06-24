@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface SaleplanMapper {
     int deleteByPrimaryKey(Long id);
+    List<Saleplan> getAll();
     int insert(Saleplan record);
     int insertSelective(Saleplan record);
     Saleplan selectByPrimaryKey(Long id);

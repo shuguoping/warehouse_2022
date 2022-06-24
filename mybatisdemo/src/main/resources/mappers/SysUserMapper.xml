@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.mybatisdemo.mapper.SysUserMapper">
     <resultMap id="basicMap" type="com.example.mybatisdemo.entity.SysUser">
-        <id column="userID" property="userID"></id>
+        <id column="userId" property="userId"></id>
     </resultMap>
     <!--statment-->
     <select id="getById" resultMap="basicMap">
-        select * from sysuser where userID = #{id}
+        select * from sysuser where userId = #{id}
     </select>
 
     <select id="getAll" resultMap="basicMap">
@@ -14,21 +14,28 @@
     </select>
 
     <insert id="insert">
-        insert into sysuser(userID, userName, userPassword, userRoleId, userFlag)
-        values(#{userID},#{userName},#{userPassword},#{userRoleId},#{userFlag})
+        insert into sysuser(userId, userName, userPassword, userRoleId, userFlag)
+        values(#{userId},#{userName},#{userPassword},#{userRoleId},#{userFlag})
     </insert>
 
     <update id="update">
         update sysuser set userName = #{userName},userPassword=#{userPassword},
                            userRoleId = #{userRoleId},userFlag=#{userFlag}
-        where userID = #{userID}
+        where userId = #{userId}
     </update>
 
     <delete id="delete">
-        delete from sysuser where userID = #{userID}
+        delete from sysuser where userId = #{userId}
     </delete>
 
-    <select id="login" resultType="com.example.mybatisdemo.entity.SysUser">
+    <select id="login" resultMap="basicMap">
         select * from sysuser where userName = #{userName} and userPassword = #{userPassword}
+    </select>
+
+    <select id="search" resultMap="basicMap">
+        select * from sysuser where userName like #{userName}
+        <if test="userRoleId != 0">
+            and userRoleId = #{userRoleId}
+        </if>
     </select>
 </mapper>

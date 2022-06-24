@@ -5,34 +5,34 @@
 <mapper namespace="com.example.mybatisdemo.mapper.DataclientlevelMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Dataclientlevel">
-            <id property="id" column="dclID" jdbcType="INTEGER"/>
+            <id property="id" column="dclId" jdbcType="INTEGER"/>
             <result property="name" column="dclName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        dclID,dclName
+        dclId,dclName
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from dataclientlevel
-        where  dclID = #{id,jdbcType=INTEGER} 
+        where  dclId = #{id,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from dataclientlevel
-        where  dclID = #{id,jdbcType=INTEGER} 
+        where  dclId = #{id,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="dclID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataclientlevel" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="dclId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataclientlevel" useGeneratedKeys="true">
         insert into dataclientlevel
-        ( dclID,dclName)
+        ( dclId,dclName)
         values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="dclID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataclientlevel" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="dclId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataclientlevel" useGeneratedKeys="true">
         insert into dataclientlevel
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">dclID,</if>
+                <if test="id != null">dclId,</if>
                 <if test="name != null">dclName,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -47,12 +47,12 @@
                     dclName = #{name,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   dclID = #{id,jdbcType=INTEGER} 
+        where   dclId = #{id,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Dataclientlevel">
         update dataclientlevel
         set 
             dclName =  #{name,jdbcType=VARCHAR}
-        where   dclID = #{id,jdbcType=INTEGER} 
+        where   dclId = #{id,jdbcType=INTEGER} 
     </update>
 </mapper>

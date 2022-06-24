@@ -5,34 +5,34 @@
 <mapper namespace="com.example.mybatisdemo.mapper.DataservertypeMapper">
 
     <resultMap id="BaseResultMap" type="com.example.mybatisdemo.entity.Dataservertype">
-            <id property="id" column="dstID" jdbcType="INTEGER"/>
+            <id property="id" column="dstId" jdbcType="INTEGER"/>
             <result property="name" column="dstName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        dstID,dstName
+        dstId,dstName
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from dataservertype
-        where  dstID = #{id,jdbcType=INTEGER} 
+        where  dstId = #{id,jdbcType=INTEGER} 
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from dataservertype
-        where  dstID = #{id,jdbcType=INTEGER} 
+        where  dstId = #{id,jdbcType=INTEGER} 
     </delete>
-    <insert id="insert" keyColumn="dstID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
+    <insert id="insert" keyColumn="dstId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
         insert into dataservertype
-        ( dstID,dstName)
+        ( dstId,dstName)
         values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR})
     </insert>
-    <insert id="insertSelective" keyColumn="dstID" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="dstId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Dataservertype" useGeneratedKeys="true">
         insert into dataservertype
         <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">dstID,</if>
+                <if test="id != null">dstId,</if>
                 <if test="name != null">dstName,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -47,12 +47,12 @@
                     dstName = #{name,jdbcType=VARCHAR},
                 </if>
         </set>
-        where   dstID = #{id,jdbcType=INTEGER} 
+        where   dstId = #{id,jdbcType=INTEGER} 
     </update>
     <update id="updateByPrimaryKey" parameterType="com.example.mybatisdemo.entity.Dataservertype">
         update dataservertype
         set 
             dstName =  #{name,jdbcType=VARCHAR}
-        where   dstID = #{id,jdbcType=INTEGER} 
+        where   dstId = #{id,jdbcType=INTEGER} 
     </update>
 </mapper>

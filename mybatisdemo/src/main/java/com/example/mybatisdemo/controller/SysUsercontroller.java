@@ -17,10 +17,13 @@ public class SysUsercontroller {
     private SysUserService sysUserService;
 
     @GetMapping("getPaged")
-    public Result<PageInfo> getPaged
-            (@RequestParam(defaultValue = "1") int pageNum,
-             @RequestParam(defaultValue = "3") int pageSize) {
-        PageInfo<SysUser> pageInfo =sysUserService.getPaged(pageNum, pageSize);
+    public Result<PageInfo> getPaged(
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "3") int pageSize,
+            @RequestParam(defaultValue = "") String userName,
+            @RequestParam(defaultValue = "0") Integer userRoleId
+    ){
+        PageInfo<SysUser> pageInfo = sysUserService.getPaged(pageNum, pageSize,userName,userRoleId);
         return new Result<>(pageInfo);
     }
 
@@ -48,5 +51,10 @@ public class SysUsercontroller {
     @GetMapping("hello")
     public String hello(){
         return "hello world!!!";
+    }
+
+    @GetMapping("login")
+    public Result<SysUser> login(String username,String password){
+        return new Result<>(sysUserService.login(username, password));
     }
 }
