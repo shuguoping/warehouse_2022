@@ -1,5 +1,6 @@
 package com.example.mybatisdemo;
 
+import com.example.mybatisdemo.entity.Salechance;
 import com.example.mybatisdemo.entity.Saleplan;
 import com.example.mybatisdemo.mapper.SaleplanMapper;
 import com.example.mybatisdemo.service.SalePlanService;
@@ -20,13 +21,19 @@ public class SalePlanTest {
     private SalePlanService salePlanService;
 
     @Test //单一查询
-    void testSalePlanGetById() {
+    void testSalePlanGetById1() {
+        Saleplan saleplan = saleplanMapper.selectByPrimaryKey(1L);
+        System.out.println(saleplan);
+    }
+
+    @Test //单一查询
+    void testSalePlanGetById2() {
         Saleplan saleplan = saleplanMapper.selectByPrimaryKey(1L);
         System.out.println(saleplan.getId()+","+saleplan.getChcid()+","+saleplan.getTodo());
     }
 
     @Test //全部查询
-    void testSalePlanGetAll() {
+    void testSalePlanGetAll1() {
         List<Saleplan> all = saleplanMapper.getAll();
         for (Saleplan saleplan: all) {
             System.out.println(saleplan.getId()+","+
@@ -36,9 +43,15 @@ public class SalePlanTest {
         }
     }
 
+    @Test //全部查询
+    void testSalePlanGetAll2() {
+        List<Saleplan> all = saleplanMapper.getAll();
+        System.out.println(all);
+    }
+
     @Test //插入
     void testSalePlanInsert() {
-        int n = saleplanMapper.insert(new Saleplan(4,5,"与客户交流","",null));
+        int n = saleplanMapper.insert(new Saleplan(4,100,"与客户交流","",null));
         System.out.println(n);
     }
 
@@ -55,7 +68,7 @@ public class SalePlanTest {
     }
 
     @Test //分页查询
-    void testSalePlanPaged() {
+    void testSalePlanPaged1() {
         PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
         System.out.println("pageNum="+pageInfo.getPageNum()+
                            ",pageSize="+pageInfo.getPageSize()+
@@ -64,4 +77,11 @@ public class SalePlanTest {
                 ",total="+pageInfo.getTotal()+
                 ",pages="+pageInfo.getPages());
     }
+
+    @Test //分页查询
+    void testSalePlanPaged2() {
+        PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
+        System.out.println(pageInfo);
+    }
+
 }

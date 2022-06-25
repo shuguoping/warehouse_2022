@@ -9,7 +9,7 @@
             <result property="chcid" column="planChcId" jdbcType="INTEGER"/>
             <result property="todo" column="planTodo" jdbcType="VARCHAR"/>
             <result property="result" column="planResult" jdbcType="VARCHAR"/>
-
+            <!--关联集合-->
             <association
                     property="salechance"
                     column="planChcId"
@@ -17,12 +17,19 @@
             </association>
     </resultMap>
 
+    <resultMap id="newBaseResultMap" type="com.example.mybatisdemo.entity.Saleplan">
+        <id property="id" column="planId" jdbcType="INTEGER"/>
+        <result property="chcid" column="planChcId" jdbcType="INTEGER"/>
+        <result property="todo" column="planTodo" jdbcType="VARCHAR"/>
+        <result property="result" column="planResult" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         planId,planChcId,planTodo,
         planResult
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="newBaseResultMap">
         select
         <include refid="Base_Column_List" />
         from saleplan
@@ -36,7 +43,7 @@
         where planChcId = #{planChcId}
     </select>
 
-    <select id="getAll" resultMap="BaseResultMap">
+    <select id="getAll" resultMap="newBaseResultMap">
         select * from saleplan
     </select>
 
@@ -44,6 +51,11 @@
         delete from saleplan
         where  planId = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteByChcId" parameterType="java.lang.Long">
+        delete from saleplan
+        where  planChcId = #{chcid,jdbcType=INTEGER}
+    </delete>
+
     <insert id="insert" keyColumn="planId" keyProperty="id" parameterType="com.example.mybatisdemo.entity.Saleplan" useGeneratedKeys="true">
         insert into saleplan
         ( planId,planChcId,planTodo

@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Saleplan implements Serializable {
-    private Integer id;
-    private Integer chcid;
-    private String todo;
-    private String result;
+    private Integer id; //销售机会执行计划编号
+    private Integer chcid; //所属销售机会编号
+    private String todo; //执行内容
+    private String result; //执行结果
 
     private Salechance salechance;
 

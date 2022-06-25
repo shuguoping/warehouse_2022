@@ -9,7 +9,6 @@ public interface SysUserService {
     PageInfo<SysUser> getPaged(int pageNum,int pageSize,String userName,Integer userRoleId);
 
     SysUser getById(int id);
-
     int insert(SysUser sysUser);
     int update(SysUser sysUser);
     int delete(int id);

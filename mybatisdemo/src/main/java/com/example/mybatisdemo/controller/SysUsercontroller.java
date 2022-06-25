@@ -21,8 +21,7 @@ public class SysUsercontroller {
             @RequestParam(defaultValue = "1") int pageNum,
             @RequestParam(defaultValue = "3") int pageSize,
             @RequestParam(defaultValue = "") String userName,
-            @RequestParam(defaultValue = "0") Integer userRoleId
-    ){
+            @RequestParam(defaultValue = "0") Integer userRoleId){
         PageInfo<SysUser> pageInfo = sysUserService.getPaged(pageNum, pageSize,userName,userRoleId);
         return new Result<>(pageInfo);
     }

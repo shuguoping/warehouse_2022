@@ -27,4 +27,29 @@ public class SalePlanServiceImpl implements SalePlanService {
         return pageInfo;
     }
 
+    @Override
+    public Saleplan selectByPrimaryKey(Long id) {
+        return saleplanMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int insert(Saleplan saleplan) {
+        return saleplanMapper.insert(saleplan);
+    }
+
+    @Override
+    public int updateByPrimaryKey(Saleplan saleplan) {
+        return saleplanMapper.updateByPrimaryKey(saleplan);
+    }
+
+    @Override
+    public int deleteByPrimaryKey(Long id) {
+        return saleplanMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int deleteByChcId(Long chcid) {
+        return saleplanMapper.deleteByChcId(chcid);
+    }
+
 }

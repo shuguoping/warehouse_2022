@@ -26,6 +26,22 @@
         </collection>
     </resultMap>
 
+    <resultMap id="newBaseResultMap" type="com.example.mybatisdemo.entity.Salechance">
+        <id property="id" column="chanceId" jdbcType="INTEGER"/>
+        <result property="source" column="chanceSource" jdbcType="VARCHAR"/>
+        <result property="custname" column="chanceCustName" jdbcType="VARCHAR"/>
+        <result property="title" column="chanceTitle" jdbcType="VARCHAR"/>
+        <result property="rate" column="chanceRate" jdbcType="INTEGER"/>
+        <result property="linkman" column="chanceLinkman" jdbcType="VARCHAR"/>
+        <result property="tel" column="chanceTel" jdbcType="VARCHAR"/>
+        <result property="desc" column="chanceDesc" jdbcType="VARCHAR"/>
+        <result property="createid" column="chanceCreateId" jdbcType="OTHER"/>
+        <result property="createdate" column="chanceCreateDate" jdbcType="VARCHAR"/>
+        <result property="dueid" column="chanceDueId" jdbcType="INTEGER"/>
+        <result property="duedate" column="chanceDueDate" jdbcType="VARCHAR"/>
+        <result property="status" column="chanceStatus" jdbcType="INTEGER"/>
+    </resultMap>
+
     <sql id="Base_Column_List">
         chanceId,chanceSource,chanceCustName,
         chanceTitle,chanceRate,chanceLinkman,
@@ -40,13 +56,12 @@
         from salechance
         where  chanceId = #{id,jdbcType=INTEGER}
     </select>
-    <select id="getAll" resultMap="BaseResultMap">
+    <select id="getAll" resultMap="newBaseResultMap">
         select
         <include refid="Base_Column_List" />
         from salechance
     </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
         delete from salechance
         where  chanceId = #{id,jdbcType=INTEGER}
     </delete>
