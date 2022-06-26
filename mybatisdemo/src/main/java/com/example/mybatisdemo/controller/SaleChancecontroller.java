@@ -4,8 +4,10 @@ package com.example.mybatisdemo.controller;
 import com.example.mybatisdemo.entity.Result;
 import com.example.mybatisdemo.entity.Salechance;
 import com.example.mybatisdemo.entity.Saleplan;
+import com.example.mybatisdemo.entity.SysUser;
 import com.example.mybatisdemo.service.SaleChanceService;
 import com.example.mybatisdemo.service.SalePlanService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -19,6 +21,19 @@ public class SaleChancecontroller {
 
     @Resource
     private SalePlanService salePlanService;
+
+
+    @GetMapping("getPaged")
+    public Result<PageInfo> getPaged(
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "3") int pageSize,
+            @RequestParam(defaultValue = "") String custname,
+            @RequestParam(defaultValue = "") String title,
+            @RequestParam(defaultValue = "") String linkman,
+            @RequestParam(defaultValue = "0") Integer status){
+        PageInfo<Salechance> pageInfo = saleChanceService.getPaged(pageNum, pageSize, custname, title, linkman, status);
+        return new Result<>(pageInfo);
+    }
 
     @GetMapping("{id}")
     public Result<Salechance> selectByPrimaryKey(@PathVariable("id") Long id){

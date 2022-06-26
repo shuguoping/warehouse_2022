@@ -2,7 +2,6 @@ package com.example.mybatisdemo.controller;
 
 
 import com.example.mybatisdemo.entity.Clientinfo;
-import com.example.mybatisdemo.entity.Clientlinkman;
 import com.example.mybatisdemo.entity.Result;
 import com.example.mybatisdemo.service.ClientinfoService;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ public class Clientinfocontroller {
 
     @Resource
     private ClientinfoService clientinfoService;
+
 
     @GetMapping("{id}")
     public Result<Clientinfo> selectByPrimaryKey(@PathVariable("id") String id){
