@@ -15,7 +15,7 @@ public class ClientinfoServiceImpl implements ClientinfoService {
     private ClientinfoMapper clientinfoMapper;
 
     @Override
-    public Clientinfo selectByPrimaryKey(Long id) {
+    public Clientinfo selectByPrimaryKey(String id) {
         return clientinfoMapper.selectByPrimaryKey(id);
     }
 
@@ -30,7 +30,7 @@ public class ClientinfoServiceImpl implements ClientinfoService {
     }
 
     @Override
-    public int deleteByPrimaryKey(Long id) {
+    public int deleteByPrimaryKey(String id) {
         return clientinfoMapper.deleteByPrimaryKey(id);
     }
 }

@@ -41,17 +41,18 @@
         clientLoseReason,clientLoseDate
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from clientinfo
         where  clientCode = #{code,jdbcType=VARCHAR} 
     </select>
 
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
         delete from clientinfo
         where  clientCode = #{code,jdbcType=VARCHAR} 
     </delete>
+
     <insert id="insert" keyColumn="clientCode" keyProperty="code" parameterType="com.example.mybatisdemo.entity.Clientinfo" useGeneratedKeys="true">
         insert into clientinfo
         ( clientCode,clientName,clientAreaId

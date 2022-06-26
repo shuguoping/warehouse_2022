@@ -5,13 +5,13 @@ import com.example.mybatisdemo.entity.Clientinfo;
 
 public interface ClientinfoMapper {
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
     int insert(Clientinfo record);
 
     int insertSelective(Clientinfo record);
 
-    Clientinfo selectByPrimaryKey(Long id);
+    Clientinfo selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(Clientinfo record);
 

@@ -17,7 +17,7 @@ public class Clientinfocontroller {
     private ClientinfoService clientinfoService;
 
     @GetMapping("{id}")
-    public Result<Clientinfo> selectByPrimaryKey(@PathVariable("id") Long id){
+    public Result<Clientinfo> selectByPrimaryKey(@PathVariable("id") String id){
         return new Result<>(clientinfoService.selectByPrimaryKey(id));
     }
 
@@ -32,7 +32,7 @@ public class Clientinfocontroller {
     }
 
     @DeleteMapping("{id}")
-    public Result<Integer> deleteByPrimaryKey(@PathVariable("id") Long id){
+    public Result<Integer> deleteByPrimaryKey(@PathVariable("id") String id){
         return new Result<>(clientinfoService.deleteByPrimaryKey(id));
     }
 
