@@ -55,4 +55,8 @@
             dstName =  #{name,jdbcType=VARCHAR}
         where   dstID = #{id,jdbcType=INTEGER} 
     </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from dataservertype
+    </select>
 </mapper>

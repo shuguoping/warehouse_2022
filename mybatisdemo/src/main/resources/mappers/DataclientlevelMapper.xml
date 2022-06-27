@@ -55,4 +55,8 @@
             dclName =  #{name,jdbcType=VARCHAR}
         where   dclId = #{id,jdbcType=INTEGER} 
     </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from dataclientlevel
+    </select>
 </mapper>

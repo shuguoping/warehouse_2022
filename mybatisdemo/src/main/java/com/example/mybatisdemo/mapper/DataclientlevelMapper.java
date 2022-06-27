@@ -1,6 +1,9 @@
 package com.example.mybatisdemo.mapper;
 
+import com.example.mybatisdemo.entity.Dataarea;
 import com.example.mybatisdemo.entity.Dataclientlevel;
+
+import java.util.List;
 
 /**
 * @author 17190
@@ -22,4 +25,5 @@ public interface DataclientlevelMapper {
 
     int updateByPrimaryKey(Dataclientlevel record);
 
+    List<Dataclientlevel> getAll();
 }

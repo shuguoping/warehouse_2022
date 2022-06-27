@@ -1,6 +1,10 @@
 package com.example.mybatisdemo.mapper;
 
+import com.example.mybatisdemo.entity.Clientinfo;
 import com.example.mybatisdemo.entity.Dataarea;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 17190
@@ -22,4 +26,5 @@ public interface DataareaMapper {
 
     int updateByPrimaryKey(Dataarea record);
 
+    List<Dataarea> getAll();
 }

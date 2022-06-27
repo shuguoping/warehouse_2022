@@ -1,6 +1,9 @@
 package com.example.mybatisdemo.mapper;
 
+import com.example.mybatisdemo.entity.Dataclientlevel;
 import com.example.mybatisdemo.entity.Dataservertype;
+
+import java.util.List;
 
 
 public interface DataservertypeMapper {
@@ -16,5 +19,7 @@ public interface DataservertypeMapper {
     int updateByPrimaryKeySelective(Dataservertype record);
 
     int updateByPrimaryKey(Dataservertype record);
+
+    List<Dataservertype> getAll();
 
 }

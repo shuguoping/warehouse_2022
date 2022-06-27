@@ -55,4 +55,8 @@
             daName =  #{daname,jdbcType=VARCHAR}
         where   daId = #{daid,jdbcType=INTEGER} 
     </update>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        select * from dataarea
+    </select>
 </mapper>
