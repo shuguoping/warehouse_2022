@@ -121,19 +121,25 @@
               <span>基础数据</span>
             </template>
             <el-menu-item index="1-1">
-              <router-link to="/Orders">数据字典-企业客户等级</router-link>
+              <router-link to="/DataClientLevel">数据字典-企业客户等级</router-link>
             </el-menu-item >
             <el-menu-item index="1-2">
-              <router-link to="/Orders">数据字典-服务类型</router-link>
+              <router-link to="/DataServerType">数据字典-服务类型</router-link>
             </el-menu-item >
             <el-menu-item index="1-3">
-              <router-link to="/Orders">数据字典-地区</router-link>
+              <router-link to="/DataArea">数据字典-地区</router-link>
             </el-menu-item >
             <el-menu-item index="1-4">
               <router-link to="/SysUser">用户及权限管理</router-link>
             </el-menu-item >
           </el-sub-menu>
         </el-menu>
+
+        <iframe name="weather_inc"
+                src="http://i.tianqi.com/index.php?c=code&id=7"
+                style="border:hidden"
+                width="180" height="250" >
+        </iframe>
 
       </el-aside>
       <el-main>

@@ -53,6 +53,19 @@ export default createRouter({
                     path:'/AddSysUser',
                     name:'AddSysUser',
                     component:()=>import('../components/AddSysUser')
+                },
+                {
+                    path:'/DataArea',
+                    name:'DataArea',
+                    component:()=>import('../components/DataArea')
+                },{
+                    path:'/DataClientLevel',
+                    name:'DataClientLevel',
+                    component:()=>import('../components/DataClientLevel')
+                },{
+                    path:'/DataServerType',
+                    name:'DataServerType',
+                    component:()=>import('../components/DataServerType')
                 }
             ]
         }
