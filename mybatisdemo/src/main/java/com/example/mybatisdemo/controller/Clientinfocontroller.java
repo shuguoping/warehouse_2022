@@ -21,8 +21,9 @@ public class Clientinfocontroller {
             @RequestParam(defaultValue = "1") int pageNum,
             @RequestParam(defaultValue = "3") int pageSize,
             @RequestParam(defaultValue = "") String code,
-            @RequestParam(defaultValue = "0") String name){
-        PageInfo<Clientinfo> pageInfo = clientinfoService.getPaged(pageNum, pageSize, code, name);
+            @RequestParam(defaultValue = "") String name,
+            @RequestParam(defaultValue = "0") Integer custid){
+        PageInfo<Clientinfo> pageInfo = clientinfoService.getPaged(pageNum, pageSize, code, name ,custid);
         return new Result<>(pageInfo);
     }
 

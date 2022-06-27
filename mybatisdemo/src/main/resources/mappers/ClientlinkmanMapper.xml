@@ -103,4 +103,11 @@
             clientCode =  #{code,jdbcType=VARCHAR}
         where   clientLinkmanId = #{linkmanid,jdbcType=INTEGER} 
     </update>
+
+    <select id="search" resultMap="BaseResultMap">
+        select * from clientlinkman where clientCode like #{code}
+        <if test="linkmanname != 0">
+            and clientLinkmanName like #{linkmanname}
+        </if>
+    </select>
 </mapper>

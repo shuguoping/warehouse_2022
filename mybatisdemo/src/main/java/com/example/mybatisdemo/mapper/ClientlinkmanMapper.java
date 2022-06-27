@@ -1,13 +1,12 @@
 package com.example.mybatisdemo.mapper;
 
+import com.example.mybatisdemo.entity.Clientinfo;
 import com.example.mybatisdemo.entity.Clientlinkman;
+import org.apache.ibatis.annotations.Param;
 
-/**
-* @author 17190
-* @description 针对表【clientlinkman】的数据库操作Mapper
-* @createDate 2022-06-21 23:35:12
-* @Entity com.example.mybatisdemo.entity.Clientlinkman
-*/
+import java.util.List;
+
+
 public interface ClientlinkmanMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -22,4 +21,5 @@ public interface ClientlinkmanMapper {
 
     int updateByPrimaryKey(Clientlinkman record);
 
+    List<Clientlinkman> search(@Param("code") String code, @Param("linkmanname") String linkmanname);
 }

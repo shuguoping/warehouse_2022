@@ -64,4 +64,11 @@
             clientCode =  #{code,jdbcType=VARCHAR}
         where   clientReprieveLoseId = #{reprieveloseid,jdbcType=INTEGER} 
     </update>
+
+    <select id="search" resultMap="BaseResultMap">
+        select * from clientreprievelose where clientCode like #{code}
+        <if test="reprievestep != 0">
+            and reprieveStep like #{reprievestep}
+        </if>
+    </select>
 </mapper>

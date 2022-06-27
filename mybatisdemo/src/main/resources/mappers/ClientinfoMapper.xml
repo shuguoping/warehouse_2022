@@ -227,8 +227,9 @@
 
     <select id="search" resultMap="BaseResultMap">
         select * from clientinfo where clientCode like #{code}
-        <if test="name != 0">
-            and clientName like #{name}
+        and clientName like #{name}
+        <if test="custid != 0">
+            and clientCustId = #{custid}
         </if>
     </select>
 </mapper>

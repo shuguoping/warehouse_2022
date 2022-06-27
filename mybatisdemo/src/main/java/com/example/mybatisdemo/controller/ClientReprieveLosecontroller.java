@@ -1,9 +1,11 @@
 package com.example.mybatisdemo.controller;
 
 
+import com.example.mybatisdemo.entity.Clientlinkman;
 import com.example.mybatisdemo.entity.Clientreprievelose;
 import com.example.mybatisdemo.entity.Result;
 import com.example.mybatisdemo.service.ClientReprieveloseService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,6 +16,16 @@ public class ClientReprieveLosecontroller {
 
     @Resource
     private ClientReprieveloseService clientReprieveloseService;
+
+    @GetMapping("getPaged")
+    public Result<PageInfo> getPaged(
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "3") int pageSize,
+            @RequestParam(defaultValue = "") String code,
+            @RequestParam(defaultValue = "0") String reprievestep){
+        PageInfo<Clientreprievelose> pageInfo = clientReprieveloseService.getPaged(pageNum, pageSize, code, reprievestep);
+        return new Result<>(pageInfo);
+    }
 
     @GetMapping("{id}")
     public Result<Clientreprievelose> selectByPrimaryKey(@PathVariable("id") Long id){

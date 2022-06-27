@@ -1,6 +1,9 @@
 package com.example.mybatisdemo.mapper;
 
 import com.example.mybatisdemo.entity.Orders;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 
 public interface OrdersMapper {
@@ -11,4 +14,5 @@ public interface OrdersMapper {
     int updateByPrimaryKeySelective(Orders record);
     int updateByPrimaryKey(Orders record);
 
+    List<Orders> search(@Param("code") String code, @Param("state") Integer state);
 }

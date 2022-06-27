@@ -1,6 +1,9 @@
 package com.example.mybatisdemo.mapper;
 
 import com.example.mybatisdemo.entity.Clientserver;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 17190
@@ -22,4 +25,5 @@ public interface ClientserverMapper {
 
     int updateByPrimaryKey(Clientserver record);
 
+    List<Clientserver> search(@Param("clientcode") String clientcode, @Param("title") String title, @Param("typeid") Integer typeid);
 }

@@ -4,7 +4,7 @@ import com.example.mybatisdemo.entity.Clientinfo;
 import com.github.pagehelper.PageInfo;
 
 public interface ClientinfoService {
-    PageInfo<Clientinfo> getPaged(int pageNum, int pageSize, String code, String name);
+    PageInfo<Clientinfo> getPaged(int pageNum, int pageSize, String code, String name, Integer custid);
 
     Clientinfo selectByPrimaryKey(String id);
     int insert(Clientinfo clientinfo);

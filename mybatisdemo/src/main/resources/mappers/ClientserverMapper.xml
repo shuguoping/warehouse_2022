@@ -151,4 +151,12 @@
             clientContentment =  #{clientcontentment,jdbcType=INTEGER}
         where   serverId = #{id,jdbcType=INTEGER} 
     </update>
+
+    <select id="search" resultMap="BaseResultMap">
+        select * from clientserver where clientCode like #{clientcode}
+        and serverTitle like #{title}
+        <if test="typeid != 0">
+            and serverTypeId = #{typeid}
+        </if>
+    </select>
 </mapper>

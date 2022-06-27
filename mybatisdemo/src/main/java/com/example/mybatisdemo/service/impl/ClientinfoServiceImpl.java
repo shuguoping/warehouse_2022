@@ -19,9 +19,10 @@ public class ClientinfoServiceImpl implements ClientinfoService {
     private ClientinfoMapper clientinfoMapper;
 
     @Override
-    public PageInfo<Clientinfo> getPaged(int pageNum, int pageSize, String code, String name) {
+    public PageInfo<Clientinfo> getPaged(int pageNum, int pageSize, String code, String name, Integer custid)
+    {
         PageHelper.startPage(pageNum, pageSize);
-        List<Clientinfo> list = clientinfoMapper.search("%"+code+"%",name);
+        List<Clientinfo> list = clientinfoMapper.search("%"+code+"%",name+"%",custid);
         PageInfo<Clientinfo> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }

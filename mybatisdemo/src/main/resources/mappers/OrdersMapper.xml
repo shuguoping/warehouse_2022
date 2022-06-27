@@ -96,4 +96,11 @@
             remark =  #{remark,jdbcType=VARCHAR}
         where   ordersId = #{id,jdbcType=INTEGER} 
     </update>
+
+    <select id="search" resultMap="BaseResultMap">
+        select * from orders where clientCode like #{code}
+        <if test="state != 0">
+            and ordersState like #{state}
+        </if>
+    </select>
 </mapper>

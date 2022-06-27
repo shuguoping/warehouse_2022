@@ -20,6 +20,6 @@ public interface ClientinfoMapper {
 
     int updateByPrimaryKey(Clientinfo record);
 
-    List<Clientinfo> search(@Param("code") String code, @Param("name") String name);
+    List<Clientinfo> search(@Param("code") String code, @Param("name") String name, @Param("custid") Integer custid);
 
 }

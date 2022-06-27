@@ -1,6 +1,10 @@
 package com.example.mybatisdemo.mapper;
 
+import com.example.mybatisdemo.entity.Clientlinkman;
 import com.example.mybatisdemo.entity.Clientreprievelose;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
 * @author 17190
@@ -21,5 +25,7 @@ public interface ClientreprieveloseMapper {
     int updateByPrimaryKeySelective(Clientreprievelose record);
 
     int updateByPrimaryKey(Clientreprievelose record);
+
+    List<Clientreprievelose> search(@Param("code") String code, @Param("reprievestep") String reprievestep);
 
 }
