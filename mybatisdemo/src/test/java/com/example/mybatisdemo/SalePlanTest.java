@@ -69,19 +69,19 @@ public class SalePlanTest {
 
     @Test //分页查询
     void testSalePlanPaged1() {
-        PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
+        /*PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
         System.out.println("pageNum="+pageInfo.getPageNum()+
                            ",pageSize="+pageInfo.getPageSize()+
                 ",startRow="+pageInfo.getStartRow()+
                 ",endRow="+pageInfo.getEndRow()+
                 ",total="+pageInfo.getTotal()+
-                ",pages="+pageInfo.getPages());
+                ",pages="+pageInfo.getPages()); */
     }
 
     @Test //分页查询
     void testSalePlanPaged2() {
-        PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
-        System.out.println(pageInfo);
+        /*PageInfo<Saleplan> pageInfo = salePlanService.getPaged(1, 3);
+        System.out.println(pageInfo);*/
     }
 
 }

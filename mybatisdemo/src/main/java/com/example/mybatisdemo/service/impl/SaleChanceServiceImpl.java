@@ -23,9 +23,9 @@ public class SaleChanceServiceImpl implements SaleChanceService {
     private SaleplanMapper saleplanMapper;
 
     @Override
-    public PageInfo<Salechance> getPaged(int pageNum, int pageSize,String custname,String title,String linkman, Integer status) {
+    public PageInfo<Salechance> getPaged(int pageNum, int pageSize,String custname,String title,String linkman) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Salechance> list = salechanceMapper.search("%"+custname+"%",title+"%",linkman+"%",status);
+        List<Salechance> list = salechanceMapper.search("%"+custname+"%",title+"%",linkman);
         PageInfo<Salechance> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }

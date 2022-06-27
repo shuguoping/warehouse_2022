@@ -6,7 +6,7 @@ import com.github.pagehelper.PageInfo;
 
 public interface SaleChanceService {
 
-    PageInfo<Salechance> getPaged(int pageNum, int pageSize, String custname, String title,String linkman,Integer status);
+    PageInfo<Salechance> getPaged(int pageNum, int pageSize, String custname, String title,String linkman);
 
     Salechance selectByPrimaryKey(Long id);
     int insert(Salechance salechance);

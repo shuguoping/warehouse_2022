@@ -29,14 +29,14 @@
         planResult
     </sql>
 
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="newBaseResultMap">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from saleplan
         where  planId = #{id,jdbcType=INTEGER}
     </select>
     <!--被关联集合-->
-    <select id="getByChanceId" resultMap="BaseResultMap">
+    <select id="getByChanceId" resultMap="newBaseResultMap">
         select
         <include refid="Base_Column_List" />
         from saleplan
@@ -101,4 +101,11 @@
             planResult =  #{result,jdbcType=VARCHAR}
         where   planId = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="search" resultMap="newBaseResultMap">
+            select * from saleplan where planTodo like #{todo}
+        <if test="chcid != 0">
+            and planChcId = #{chcid}
+        </if>
+    </select>
 </mapper>

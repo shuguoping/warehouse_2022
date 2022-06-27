@@ -4,6 +4,7 @@ package com.example.mybatisdemo.controller;
 import com.example.mybatisdemo.entity.Clientinfo;
 import com.example.mybatisdemo.entity.Result;
 import com.example.mybatisdemo.service.ClientinfoService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,6 +16,15 @@ public class Clientinfocontroller {
     @Resource
     private ClientinfoService clientinfoService;
 
+    @GetMapping("getPaged")
+    public Result<PageInfo> getPaged(
+            @RequestParam(defaultValue = "1") int pageNum,
+            @RequestParam(defaultValue = "3") int pageSize,
+            @RequestParam(defaultValue = "") String code,
+            @RequestParam(defaultValue = "0") String name){
+        PageInfo<Clientinfo> pageInfo = clientinfoService.getPaged(pageNum, pageSize, code, name);
+        return new Result<>(pageInfo);
+    }
 
     @GetMapping("{id}")
     public Result<Clientinfo> selectByPrimaryKey(@PathVariable("id") String id){

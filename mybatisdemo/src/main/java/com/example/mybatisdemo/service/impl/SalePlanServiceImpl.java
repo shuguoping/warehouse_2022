@@ -17,12 +17,9 @@ public class SalePlanServiceImpl implements SalePlanService {
     private SaleplanMapper saleplanMapper;
 
     @Override
-    public PageInfo<Saleplan> getPaged(int pageNum, int pageSize) {
-        //对跟在其后的第一个查询语句进行分页
+    public PageInfo<Saleplan> getPaged(int pageNum, int pageSize, String todo, Integer chcid) {
         PageHelper.startPage(pageNum,pageSize);
-        //得到的就是分页后的数据，就不是查询所有的数据了
-        List<Saleplan> list=saleplanMapper.getAll();
-        //基于list集合数据，创建了一个分页信息对象
+        List<Saleplan> list=saleplanMapper.search("%"+todo+"%",chcid);
         PageInfo<Saleplan> pageInfo=new PageInfo<>(list);
         return pageInfo;
     }

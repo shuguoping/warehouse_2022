@@ -74,10 +74,11 @@ public class SaleChanceTest {
     @Test  //与saleplan关联查询
     void testSalechanceById() {
         Salechance salechance = salechanceMapper.selectByPrimaryKey(42L);
-        List<Saleplan> plans = salechance.getPlans();
+        System.out.println(salechance);
+        /*List<Saleplan> plans = salechance.getPlans();
         for (Saleplan saleplan:plans) {
             System.out.println(saleplan.getId()+","+saleplan.getChcid()+","+saleplan.getTodo());
-        }
+        } */
     }
 
 }

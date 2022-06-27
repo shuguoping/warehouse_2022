@@ -1,6 +1,8 @@
 package com.example.mybatisdemo.mapper;
 
 import com.example.mybatisdemo.entity.Saleplan;
+import com.example.mybatisdemo.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +18,5 @@ public interface SaleplanMapper {
 
     List<Saleplan> getAll();
     List<Saleplan> getByChanceId(Long chanceId);
+    List<Saleplan> search(@Param("todo") String todo, @Param("chcid") Integer chcid);
 }

@@ -29,9 +29,8 @@ public class SaleChancecontroller {
             @RequestParam(defaultValue = "3") int pageSize,
             @RequestParam(defaultValue = "") String custname,
             @RequestParam(defaultValue = "") String title,
-            @RequestParam(defaultValue = "") String linkman,
-            @RequestParam(defaultValue = "0") Integer status){
-        PageInfo<Salechance> pageInfo = saleChanceService.getPaged(pageNum, pageSize, custname, title, linkman, status);
+            @RequestParam(defaultValue = "0") String linkman){
+        PageInfo<Salechance> pageInfo = saleChanceService.getPaged(pageNum, pageSize, custname, title, linkman);
         return new Result<>(pageInfo);
     }
 
