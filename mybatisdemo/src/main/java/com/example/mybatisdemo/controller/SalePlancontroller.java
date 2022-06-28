@@ -22,7 +22,7 @@ public class SalePlancontroller {
             @RequestParam(defaultValue = "3") int pageSize,
             @RequestParam(defaultValue = "") String todo,
             @RequestParam(defaultValue = "0") Integer chcid){
-        PageInfo<Saleplan> pageInfo = salePlanService.getPaged(pageNum, pageSize, todo,chcid);
+        PageInfo<Saleplan> pageInfo = salePlanService.getPaged(pageNum, pageSize, todo, chcid);
         return new Result<>(pageInfo);
     }
 

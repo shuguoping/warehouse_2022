@@ -174,8 +174,9 @@
     <select id="search" resultMap="newBaseResultMap">
         select * from salechance where chanceCustName like #{custname}
         and chanceTitle like #{title}
-        <if test="linkman != 0">
-            and chanceLinkman like #{linkman}
+        and chanceLinkman like #{linkman}
+        <if test="status != 0">
+            and chanceStatus = #{status}
         </if>
     </select>
 </mapper>

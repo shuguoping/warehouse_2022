@@ -29,8 +29,9 @@ public class SaleChancecontroller {
             @RequestParam(defaultValue = "3") int pageSize,
             @RequestParam(defaultValue = "") String custname,
             @RequestParam(defaultValue = "") String title,
-            @RequestParam(defaultValue = "0") String linkman){
-        PageInfo<Salechance> pageInfo = saleChanceService.getPaged(pageNum, pageSize, custname, title, linkman);
+            @RequestParam(defaultValue = "") String linkman,
+            @RequestParam(defaultValue = "0") Integer status){
+        PageInfo<Salechance> pageInfo = saleChanceService.getPaged(pageNum, pageSize, custname, title, linkman, status);
         return new Result<>(pageInfo);
     }
 
@@ -51,6 +52,6 @@ public class SaleChancecontroller {
 
     @DeleteMapping("{id}")
     public Result<Integer> deleteByPrimaryKey(@PathVariable("id") Long id){
-        return new Result<>(saleChanceService.deleteByPrimaryKey(id) & salePlanService.deleteByChcId(id));
+        return new Result<>(saleChanceService.deleteByPrimaryKey(id) /*& salePlanService.deleteByChcId(id)*/);
     }
 }

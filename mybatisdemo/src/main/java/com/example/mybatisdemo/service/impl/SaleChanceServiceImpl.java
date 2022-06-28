@@ -23,9 +23,9 @@ public class SaleChanceServiceImpl implements SaleChanceService {
     private SaleplanMapper saleplanMapper;
 
     @Override
-    public PageInfo<Salechance> getPaged(int pageNum, int pageSize,String custname,String title,String linkman) {
+    public PageInfo<Salechance> getPaged(int pageNum, int pageSize,String custname,String title,String linkman, Integer status) {
         PageHelper.startPage(pageNum, pageSize);
-        List<Salechance> list = salechanceMapper.search("%"+custname+"%",title+"%",linkman);
+        List<Salechance> list = salechanceMapper.search("%"+custname+"%",title+"%",linkman+"%",status);
         PageInfo<Salechance> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
@@ -37,6 +37,9 @@ public class SaleChanceServiceImpl implements SaleChanceService {
 
     @Override
     public int insert(Salechance salechance) {
+        salechance.setDueid(0);
+        salechance.setDuedate("2022-07-01");
+        salechance.setStatus(0);
         return salechanceMapper.insert(salechance);
     }
 
@@ -47,6 +50,6 @@ public class SaleChanceServiceImpl implements SaleChanceService {
 
     @Override
     public int deleteByPrimaryKey(Long id) {
-        return salechanceMapper.deleteByPrimaryKey(id) & saleplanMapper.deleteByChcId(id);
+        return salechanceMapper.deleteByPrimaryKey(id) /*& saleplanMapper.deleteByChcId(id)*/;
     }
 }
