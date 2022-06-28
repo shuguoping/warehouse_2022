@@ -27,7 +27,6 @@
       <el-button @click="showData">查询</el-button>
       <el-button @click="add">新建</el-button>
 
-      <el-button @click="$router.go(-1)">全部</el-button>
 
     </el-form-item>
   </el-form>
@@ -74,7 +73,7 @@ export default {
       title:'',
       linkman:'',
       isShow:false,
-      user:{},
+      chance:{},
       editIndex:-1,
       radio1:"2"
     }
@@ -135,24 +134,24 @@ export default {
     },
     cancel(){
       this.isShow = false;
-      this.user = {}
+      this.chance = {}
     },
     update(){
       let url = "salechance";
-      this.$http.put(url,this.user).then(resp=>{
+      this.$http.put(url,this.chance).then(resp=>{
         if(resp.data.data == 1){
           this.$message({
             message:'更新成功！',
             type:"success"
           });
           this.isShow = false;
-          this.pageInfo.list[this.editIndex] = {...this.user};
+          this.pageInfo.list[this.editIndex] = {...this.chance};
         }
       });
     },
     insert(){
       let url = "salechance";
-      this.$http.post(url,this.user).then(resp=>{
+      this.$http.post(url,this.chance).then(resp=>{
         if(resp.data.data == 1){
           this.$message({
             message:'添加成功！',
@@ -160,7 +159,7 @@ export default {
           });
           this.isShow = false;
           this.showData();
-          this.user = {}
+          this.chance = {}
         }
       });
     }

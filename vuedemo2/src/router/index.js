@@ -22,39 +22,43 @@ export default createRouter({
                     path:'/SaleChance',
                     name:'chance',
                     component:()=>import('../components/SaleChance')
-                },
-                {
+                },{
+                    path:'/EditSaleChance',
+                    name:'EditSaleChance',
+                    component:()=>import('../components/EditSaleChance')
+                },{
+                    path:'/AddSaleChance',
+                    name:'AddSaleChance',
+                    component:()=>import('../components/AddSaleChance')
+                },{
                     path:'/SalePlan',
                     name:'plan',
                     component:()=>import('../components/SalePlan')
-                },
-                {
-                    path:'/EditPlan',
-                    name:'EditPlan',
-                    component:()=>import('../components/EditPlan')
-                },
-                {
+                },{
+                    path:'/EditSalePlan',
+                    name:'EditSalePlan',
+                    component:()=>import('../components/EditSalePlan')
+                },{
+                    path:'/AddSalePlan',
+                    name:'AddSalePlan',
+                    component:()=>import('../components/AddSalePlan')
+                },{
                     path:'/Orders',
                     name:'Orders',
                     component:()=>import('../components/Orders')
-                },
-                {
+                },{
                     path:'/SysUser',
                     name:'SysUser',
                     component:()=>import('../components/SysUser')
-                },
-                {
+                },{
                     path:'/EditSysUser',
                     name:'EditSysUser',
                     component:()=>import('../components/EditSysUser')
-                }
-                ,
-                {
+                },{
                     path:'/AddSysUser',
                     name:'AddSysUser',
                     component:()=>import('../components/AddSysUser')
-                },
-                {
+                },{
                     path:'/DataArea',
                     name:'DataArea',
                     component:()=>import('../components/DataArea')

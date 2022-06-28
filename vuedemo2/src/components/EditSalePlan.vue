@@ -1,14 +1,19 @@
 <template>
+
+  <el-steps :active="2"  simple style="margin-top: 5px">
+    <el-step title="营销管理" />
+    <el-step title="销售机会管理" />
+    <el-step title="编辑销售计划" />
+  </el-steps>
+
   <h4>编辑用户</h4>
   <el-form label-width="100" style="width: 350px" size="small">
     <el-form-item label="编号：">
       {{user.userId}}
     </el-form-item>
-
     <el-form-item label="用户名：">
       <el-input v-model="user.userName"></el-input>
     </el-form-item>
-
     <el-form-item label="用户角色:">
       <el-select v-model="user.userRoleId">
         <el-option

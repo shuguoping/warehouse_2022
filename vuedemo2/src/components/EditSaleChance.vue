@@ -1,46 +1,59 @@
 <template>
+
+  <el-steps :active="2"  simple style="margin-top: 5px">
+    <el-step title="营销管理" />
+    <el-step title="销售机会管理" />
+    <el-step title="编辑销售机会" />
+  </el-steps>
+
   <h4>编辑用户</h4>
-  <el-form label-width="100" style="width: 350px" size="small">
-    <el-form-item label="编号：">
-      {{user.userId}}
+
+  <el-form label-width="100" style=" width: 350px" size="small">
+    <el-form-item label="销售机会编号：">
+      {{chance.id}}
     </el-form-item>
-    <el-form-item label="用户名：">
-      <el-input v-model="user.userName"></el-input>
+
+    <el-form-item label="机会来源：">
+      <el-input v-model="chance.source"></el-input>
     </el-form-item>
-    <el-form-item label="用户角色:">
-      <el-select v-model="user.userRoleId">
-        <el-option
-            v-for="role in roles"
-            :key="role.id"
-            :value="role.id"
-            :label="role.name"
-        >
-        </el-option>
-      </el-select>
-      <!--<el-input v-model="user.userRoleId"></el-input>-->
+
+    <el-form-item label="客户名称：*">
+      <el-input v-model="chance.custname" ></el-input>
     </el-form-item>
+
+    <el-form-item label="成功几率：*">
+      <el-input v-model="chance.rate"></el-input>
+    </el-form-item>
+
+    <el-form-item label="概要：*">
+      <el-input v-model="chance.title"></el-input>
+    </el-form-item>
+
+    <el-form-item label="联系人电话：">
+      <el-input v-model="chance.tel"></el-input>
+    </el-form-item>
+
+    <el-form-item label="联系人：">
+      <el-input v-model="chance.linkman"></el-input>
+    </el-form-item>
+
+    <el-form-item label="机会描述：">
+      <el-input v-model="chance.desc" type="textarea" />
+    </el-form-item>
+
+    <el-form-item label="创建人编号：">
+      {{chance.createid}}
+    </el-form-item>
+
+    <el-form-item label="创建时间：">
+      {{chance.createdate}}
+    </el-form-item>
+
     <el-form-item >
-      <el-button type="primary" @click="update">提交</el-button>
-      <el-button type="default" @click="reset">重置</el-button>
+      <el-button type="primary" @click="update">保存</el-button>
     </el-form-item>
   </el-form>
-  <!--  <table width="150" border="1">
-      <tr>
-        <td>编号：</td>
-        <td>{{user.userId}}</td>
-      </tr>
-      <tr>
-        <td>用户名：</td>
-        <td><input v-model="user.userName"></td>
-      </tr>
-      <tr>
-        <td>角色：</td>
-        <td><input v-model="user.userRoleId"></td>
-      </tr>
-      <tr>
-        <td colspan="2"><input type="button" value="提交" @click="update"></td>
-      </tr>
-    </table>-->
+
 </template>
 
 <script>
@@ -48,40 +61,28 @@ export default {
   name: "EditSysUser",
   data(){
     return {
-      user:{},
-      roles:[]
+      chance:{},
     }
   },
   created() {
-    this.roles = [
-      {id:1,name:"高管"},
-      {id:2,name:"销售主管"},
-      {id:3,name:"客户经理"},
-      {id:4,name:"系统管理员"}
-    ]
-
     let id = this.$route.query.id;
-    let url = "sysuser/"+id;
+    let url = "salechance/"+id;
     this.$http.get(url).then(resp=>{
-      this.user = resp.data.data;
+      this.chance = resp.data.data;
     });
   },
   methods:{
     update(){
-      let url = "sysuser";
-      this.$http.put(url,this.user).then(resp=>{
+      let url = "salechance";
+      this.$http.put(url,this.chance).then(resp=>{
         if(resp.data.data == 1){
-          // alert("更新成功！")
-          this.$router.push("/SysUser")
+          this.$router.push("/SaleChance")
         }
       });
-    },
-    reset(){
-      this.user.userName = "";
-      this.user.userRoleId = "";
     }
   }
 }
+
 </script>
 
 <style scoped>
