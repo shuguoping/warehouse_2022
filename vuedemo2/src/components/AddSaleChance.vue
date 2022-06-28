@@ -8,7 +8,7 @@
 
   <h4>添加销售机会</h4>
 
-  <el-form label-width="100px" style="width: 350px" size="small">
+  <el-form label-width="100" style=" width: 350px" size="small">
     <el-form-item label="销售机会编号：">
       <el-input v-model="chance.id"></el-input>
     </el-form-item>
@@ -49,6 +49,7 @@
       <el-input v-model="chance.createdate"></el-input>
     </el-form-item>
 
+    <br>
     <el-form-item >
       <el-button type="primary" @click="add">提交</el-button>
       <el-button type="default" @click="reset">重置</el-button>
@@ -59,7 +60,7 @@
 
 <script>
 export default {
-  name: "EditSysUser",
+  name: "AddSaleChance",
   data(){
     return {
       chance:{},

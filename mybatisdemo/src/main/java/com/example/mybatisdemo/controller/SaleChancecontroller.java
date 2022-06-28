@@ -52,6 +52,6 @@ public class SaleChancecontroller {
 
     @DeleteMapping("{id}")
     public Result<Integer> deleteByPrimaryKey(@PathVariable("id") Long id){
-        return new Result<>(saleChanceService.deleteByPrimaryKey(id) /*& salePlanService.deleteByChcId(id)*/);
+        return new Result<>(saleChanceService.deleteByPrimaryKey(id) & salePlanService.deleteByChcId(id));
     }
 }

@@ -9,7 +9,17 @@
 
   <el-table :data="pageInfo.list" stripe :header-cell-style="{textAlign: 'center'}" :cell-style="{textAlign: 'center'}">
     <el-table-column prop="id" label="编号" width="250"></el-table-column>
-    <el-table-column prop="name" label="服务类型名称(可编辑)" width="250"></el-table-column>
+
+    <el-table-column label="服务类型名称(可编辑)" width="250" >
+      <template #default="scope">
+        <template v-if="scope.row.edit">
+          <el-input v-model="tempList[scope.$index].name" ></el-input>
+        </template>
+        <template v-else>
+          {{scope.row.name}}
+        </template>
+      </template>
+    </el-table-column>
 
     <el-table-column label="对应值(不可编辑)" width="250">
       <template #default="scope">
@@ -19,9 +29,14 @@
 
     <el-table-column label="操作">
       <template #default="scope">
-        <el-button size="small" type="warning" @click="del(scope.row.id)">删除</el-button>
-        <el-button size="small" type="primary" @click="edit(scope.row.id)">编辑</el-button>
-        <el-button size="small" type="primary" @click="save(scope.row.id)">保存</el-button>
+        <template v-if="scope.row.edit">
+          <el-button size="small" type="warning" @click="cancel2(scope)">取消</el-button>
+          <el-button size="small" type="primary" @click="update2(scope)">保存</el-button>
+        </template>
+        <template v-else>
+          <el-button size="small" type="warning" @click="del(scope.row.id)">删除</el-button>
+          <el-button size="small" type="primary" @click="edit(scope.row,scope.$index)">编辑</el-button>
+        </template>
       </template>
     </el-table-column>
   </el-table>
@@ -87,6 +102,7 @@ export default {
       type:{},
       editIndex:-1,
       title:'编辑服务类型',
+      tempList:[]
     }
   },
   created() {
@@ -126,6 +142,8 @@ export default {
         }})
           .then(resp=>{
             this.pageInfo = resp.data.data;
+            let s = JSON.stringify(this.pageInfo.list)
+            this.tempList = JSON.parse(s);
           });
     },
     changePageNum(pageNum){
@@ -156,16 +174,9 @@ export default {
 
       return newtypeid;
     },
-    edit(id,index){
-      let url = "dataservertype/"+id;
-      this.$http.get(url).then(resp=>{
-        this.type = resp.data.data;
-        this.isShow = true;
-        this.editIndex = index;
-      });
-    },
-    save(){
-      this.$message({message:"保存成功！",type:'success'})
+    edit(servertype,index){
+      console.log(servertype,index)
+      servertype.edit = true;
     },
     cancel(){
       this.isShow = false;
@@ -186,6 +197,23 @@ export default {
         }
       });
     },
+    cancel2(scope){
+      scope.row.edit = false;
+      this.tempList[scope.$index] = {...scope.row}
+    },
+    update2(scope){
+      let url = "dataservertype";
+      this.$http.put(url,this.tempList[scope.$index]).then(resp=>{
+        if(resp.data.data == 1){
+          this.$message({
+            message:'更新成功！',
+            type:"success"
+          });
+
+          this.pageInfo.list[scope.$index] = {...this.tempList[scope.$index],edit:false}
+        }
+      });
+    }
   }
 }
 </script>

@@ -75,10 +75,10 @@ public class SaleChanceTest {
     void testSalechanceById() {
         Salechance salechance = salechanceMapper.selectByPrimaryKey(42L);
         System.out.println(salechance);
-        /*List<Saleplan> plans = salechance.getPlans();
+        List<Saleplan> plans = salechance.getPlans();
         for (Saleplan saleplan:plans) {
             System.out.println(saleplan.getId()+","+saleplan.getChcid()+","+saleplan.getTodo());
-        } */
+        }
     }
 
 }

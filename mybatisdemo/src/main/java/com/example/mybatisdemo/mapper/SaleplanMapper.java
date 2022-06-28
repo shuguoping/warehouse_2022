@@ -17,6 +17,6 @@ public interface SaleplanMapper {
     int updateByPrimaryKey(Saleplan record);
 
     List<Saleplan> getAll();
-    List<Saleplan> getByChanceId(Long chanceId);
+    List<Saleplan> getByChanceId(Long chcid);
     List<Saleplan> search(@Param("todo") String todo, @Param("chcid") Integer chcid);
 }

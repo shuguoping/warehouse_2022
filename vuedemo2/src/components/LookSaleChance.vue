@@ -3,42 +3,50 @@
   <el-steps :active="2"  simple style="margin-top: 5px">
     <el-step title="营销管理" />
     <el-step title="销售机会管理" />
-    <el-step title="编辑销售机会" />
+    <el-step title="销售机会详情" />
   </el-steps>
 
-  <h4>编辑用户</h4>
+  <h4>销售机会详情</h4>
 
-  <el-form label-width="100" style=" width: 350px" size="small">
+  <el-form :inline="true" label-width="100" style=" width: 350px" >
+    <el-form-item label="指派人编号：">
+      <el-input v-model="chance.dueid"></el-input>
+    </el-form-item>
+
+    <el-form-item label="指派日期：">
+      <el-input v-model="chance.duedate"></el-input>
+    </el-form-item>
+
     <el-form-item label="销售机会编号：">
       {{chance.id}}
     </el-form-item>
 
     <el-form-item label="机会来源：">
-      <el-input v-model="chance.source"></el-input>
+      {{chance.source}}
     </el-form-item>
 
-    <el-form-item label="客户名称*：">
-      <el-input v-model="chance.custname" ></el-input>
+    <el-form-item label="客户名称：">
+      {{chance.custname}}
     </el-form-item>
 
-    <el-form-item label="成功几率*：">
-      <el-input v-model="chance.rate"></el-input>
+    <el-form-item label="成功几率：">
+      {{chance.rate}}
     </el-form-item>
 
-    <el-form-item label="概要*：">
-      <el-input v-model="chance.title"></el-input>
+    <el-form-item label="概要：">
+      {{chance.title}}
     </el-form-item>
 
     <el-form-item label="联系人电话：">
-      <el-input v-model="chance.tel"></el-input>
+      {{chance.tel}}
     </el-form-item>
 
     <el-form-item label="联系人：">
-      <el-input v-model="chance.linkman"></el-input>
+      {{chance.linkman}}
     </el-form-item>
 
     <el-form-item label="机会描述：">
-      <el-input v-model="chance.desc" type="textarea" />
+      {{chance.desc}}
     </el-form-item>
 
     <el-form-item label="创建人编号：">
@@ -49,8 +57,16 @@
       {{chance.createdate}}
     </el-form-item>
 
+    <el-form-item label="计划：">
+      <view v-if="plan.plans!='' && plan.plans!=null">
+        <li v-for="(item) in plan.plans" :key="item.id">{{item.todo}}</li>
+      </view>
+    </el-form-item>
+
+
+
     <el-form-item >
-      <el-button type="primary" @click="update">保存</el-button>
+      <el-button type="primary" @click="goback">退回</el-button>
     </el-form-item>
   </el-form>
 
@@ -62,6 +78,7 @@ export default {
   data(){
     return {
       chance:{},
+      plan:{}
     }
   },
   created() {
@@ -69,16 +86,12 @@ export default {
     let url = "salechance/"+id;
     this.$http.get(url).then(resp=>{
       this.chance = resp.data.data;
+      this.plan = resp.data.data;
     });
   },
   methods:{
-    update(){
-      let url = "salechance";
-      this.$http.put(url,this.chance).then(resp=>{
-        if(resp.data.data == 1){
+    goback(){
           this.$router.push("/SaleChance")
-        }
-      });
     }
   }
 }

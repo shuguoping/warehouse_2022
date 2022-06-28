@@ -200,7 +200,6 @@ export default {
       this.userRoleId = "0"
     },
     edit(id,index){
-
       let url = "sysuser/"+id;
       this.$http.get(url).then(resp=>{
         this.user = resp.data.data;

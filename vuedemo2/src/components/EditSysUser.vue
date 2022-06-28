@@ -19,7 +19,6 @@
         >
         </el-option>
       </el-select>
-      <!--<el-input v-model="user.userRoleId"></el-input>-->
     </el-form-item>
     <el-form-item >
       <el-button type="primary" @click="update">提交</el-button>

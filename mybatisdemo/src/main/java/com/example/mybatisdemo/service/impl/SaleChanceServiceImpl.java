@@ -1,6 +1,7 @@
 package com.example.mybatisdemo.service.impl;
 
 import com.example.mybatisdemo.entity.Salechance;
+import com.example.mybatisdemo.entity.Saleplan;
 import com.example.mybatisdemo.entity.SysUser;
 import com.example.mybatisdemo.mapper.SalechanceMapper;
 import com.example.mybatisdemo.mapper.SaleplanMapper;
@@ -50,6 +51,6 @@ public class SaleChanceServiceImpl implements SaleChanceService {
 
     @Override
     public int deleteByPrimaryKey(Long id) {
-        return salechanceMapper.deleteByPrimaryKey(id) /*& saleplanMapper.deleteByChcId(id)*/;
+        return salechanceMapper.deleteByPrimaryKey(id) & saleplanMapper.deleteByChcId(id);
     }
 }

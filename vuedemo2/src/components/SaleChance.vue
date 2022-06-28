@@ -36,7 +36,7 @@
     <el-table-column prop="custname" label="客户名称" width="270"></el-table-column>
     <el-table-column prop="title" label="概要" width="290"></el-table-column>
     <el-table-column prop="linkman" label="联系人" width="100"></el-table-column>
-    <el-table-column prop="tel" label="联系人电话" width="190"></el-table-column>
+    <el-table-column prop="tel" label="联系人电话" width="150"></el-table-column>
     <el-table-column prop="createdate" label="创建时间" width="150"></el-table-column>
 
 
@@ -45,6 +45,7 @@
       <template #default="scope">
         <el-button size="small" type="primary" @click="edit(scope.row.id)">编辑</el-button>
         <el-button size="small" type="warning" @click="del(scope.row.id)">删除</el-button>
+        <el-button size="small" type="primary" @click="look(scope.row.id)">指派/详情</el-button>
       </template>
     </el-table-column>
   </el-table>
@@ -87,7 +88,7 @@ export default {
       this.$confirm("是否删除？","提示").then(()=>{
         let url = "salechance/"+id;
         this.$http.delete(url).then(resp=>{
-          if(resp.data.data == 1){
+          if(resp.data.data == 1 || resp.data.data == 0){
             this.$message({message:"删除成功！",type:'success'})
             this.showData();
           }else{
@@ -114,6 +115,9 @@ export default {
     },
     add(){
       this.$router.push("/AddSaleChance");
+    },
+    look(id){
+      this.$router.push({path:'/LookSaleChance',query:{id:id}})
     },
     changePageNum(pageNum){
       this.pageInfo.pageNum = pageNum;

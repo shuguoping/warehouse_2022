@@ -15,5 +15,6 @@ public interface SalechanceMapper {
     int updateByPrimaryKey(Salechance record);
 
     List<Salechance> getAll();
-    List<Salechance> search(@Param("custname") String custname, @Param("title") String title,@Param("linkman") String linkman,@Param("status") Integer status);
+    List<Salechance> search(@Param("custname") String custname, @Param("title") String title,
+                            @Param("linkman") String linkman,@Param("status") Integer status);
 }

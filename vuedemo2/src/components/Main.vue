@@ -130,7 +130,7 @@
               <router-link to="/DataArea">数据字典-地区</router-link>
             </el-menu-item >
             <el-menu-item index="1-4">
-              <router-link to="/SysUser">用户及权限管理</router-link>
+              <router-link to="/Sysuser">用户及权限管理</router-link>
             </el-menu-item >
           </el-sub-menu>
         </el-menu>
@@ -145,6 +145,7 @@
       <el-main>
         <router-view></router-view>
       </el-main>
+
     </el-container>
     <el-footer>
       <el-row>

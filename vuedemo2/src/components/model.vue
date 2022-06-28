@@ -4,7 +4,6 @@
     <el-radio label="1" size="large">Option 1</el-radio>
     <el-radio label="2" size="large">Option 2</el-radio>
   </el-radio-group>
-
   <el-form :inline="true" size="small">
     <el-form-item label="用户名：">
       <el-input v-model="userName"></el-input>
@@ -30,8 +29,19 @@
   </el-form>
 
   <el-table :data="pageInfo.list" stripe>
-    <el-table-column prop="userId" label="编号" width="180"></el-table-column>
-    <el-table-column prop="userName" label="用户名" width="260"></el-table-column>
+    <el-table-column prop="id" label="编号" width="180"></el-table-column>
+
+    <el-table-column label="用户名" width="260" >
+      <template #default="scope">
+        <template v-if="scope.row.edit">
+          <el-input v-model="tempList[scope.$index].userName" size="small" ></el-input>
+        </template>
+        <template v-else>
+          {{scope.row.userName}}
+        </template>
+      </template>
+    </el-table-column>
+
     <el-table-column prop="userRoleId" label="角色" width="180"></el-table-column>
     <el-table-column label="角色名" width="180">
       <template #default="scope">
@@ -40,13 +50,19 @@
     </el-table-column>
     <el-table-column label="操作">
       <template #default="scope">
-        <el-button size="small" type="primary" @click="edit(scope.row.userId)">编辑</el-button>
-        <el-button size="small" type="warning" @click="del(scope.row.userId)">删除</el-button>
-        <el-button size="small" type="primary" @click="edit2(scope.row.userId)">编辑2</el-button>
+        <el-button size="small" type="primary" @click="edit(scope.row.id)">编辑</el-button>
+        <el-button size="small" type="primary" @click="edit2(scope.row.id,scope.$index)">编辑2</el-button>
+        <template v-if="scope.row.edit">
+          <el-button size="small" type="warning" @click="cancel2(scope)">取消</el-button>
+          <el-button size="small" type="primary" @click="update2(scope)">保存</el-button>
+        </template>
+        <template v-else>
+          <el-button size="small" type="warning" @click="del(scope.row.id)">删除</el-button>
+          <el-button size="small" type="primary" @click="edit3(scope.row,scope.$index)">编辑3</el-button>
+        </template>
       </template>
     </el-table-column>
   </el-table>
-
   <el-pagination
       v-model:currentPage="pageInfo.pageNum"
       :page-size="pageInfo.pageSize"
@@ -160,7 +176,8 @@ export default {
       user:{},
       editIndex:-1,
       title:'编辑用户',
-      radio1:"2"
+      radio1:"2",
+      tempList:[]
     }
   },
   created() {
@@ -217,6 +234,13 @@ export default {
             //resp.data:响应对象中的数据（Result）
             //resp.data.data:PageInfo
             this.pageInfo = resp.data.data;
+
+            // this.tempList = this.pageInfo.list;
+            //应该对 this.pageInfo.list进行深克隆
+            //JSON.stringify:把一个对象转换为json字符串格式
+            let s = JSON.stringify(this.pageInfo.list)
+            // JSON.parse:把json字符串转换我json对象
+            this.tempList = JSON.parse(s);
           });
     },
     edit(id){
@@ -300,6 +324,27 @@ export default {
           this.user = {}
           // alert("更新成功！")
           // this.$router.push("/SysUser")
+        }
+      });
+    },
+    edit3(user,index){
+      console.log(user,index)
+      user.edit = true;
+    },
+    cancel2(scope){
+      scope.row.edit = false;
+      this.tempList[scope.$index] = {...scope.row}
+    },
+    update2(scope){
+      let url = "sysuser";
+      this.$http.put(url,this.tempList[scope.$index]).then(resp=>{
+        if(resp.data.data == 1){
+          this.$message({
+            message:'更新成功！',
+            type:"success"
+          });
+
+          this.pageInfo.list[scope.$index] = {...this.tempList[scope.$index],edit:false}
         }
       });
     }

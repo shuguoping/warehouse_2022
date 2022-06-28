@@ -31,6 +31,7 @@ public class SalePlanServiceImpl implements SalePlanService {
 
     @Override
     public int insert(Saleplan saleplan) {
+        saleplan.setResult(null);
         return saleplanMapper.insert(saleplan);
     }
 

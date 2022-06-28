@@ -31,6 +31,10 @@ export default createRouter({
                     name:'AddSaleChance',
                     component:()=>import('../components/AddSaleChance')
                 },{
+                    path:'/LookSaleChance',
+                    name:'LookSaleChance',
+                    component:()=>import('../components/LookSaleChance')
+                },{
                     path:'/SalePlan',
                     name:'plan',
                     component:()=>import('../components/SalePlan')
@@ -70,6 +74,10 @@ export default createRouter({
                     path:'/DataServerType',
                     name:'DataServerType',
                     component:()=>import('../components/DataServerType')
+                },{
+                    path:'/model',
+                    name:'model',
+                    component:()=>import('../components/model')
                 }
             ]
         }
